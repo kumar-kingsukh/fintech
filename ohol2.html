@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .row {
+            margin-top: 80px;
+        }
+          
+        .select-btn {
+            color: #ffffff;  
+            background-color: #F89406;
+            border: none;
+        }
+        
+        .select-btn:hover,
+        .select-btn:focus,
+        .select-btn:active,
+        .select-btn.active {
+            color: #ffffff;
+            background-color: #FA8900;
+            border: none;
+        }
+        
+        .upload-btn {
+            color: #ffffff;
+            background-color: #10B6EE;
+            border: none;
+        }
+        
+        .upload-btn:hover,
+        .upload-btn:focus,
+        .upload-btn:active,
+        .upload-btn.active {
+            color: #ffffff;
+            background-color: #6BC9E8;
+            border: none;
+        }
+        
+        .moneycontrol-btn {
+            color: #ffffff;
+            background-color: #33FF3C;
+            border: none;
+        }
+        
+        .moneycontrol-btn:hover,
+        .moneycontrol-btn:focus,
+        .moneycontrol-btn:active,
+        .moneycontrol-btn.active {
+            color: #ffffff;
+            background-color: #33FF77;
+            border: none;
+        }
+        
+        h4 {
+            padding-bottom: 30px;
+            color: #B8BDC1;
+        }
+        
+        .glyphicon {
+            font-size: 5em;
+            color: #9CA3A9;
+        }
+        
+        h2 {
+            margin-top: 15px;
+            color: #68757E;
+        }
+        
+        .four{
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .panel {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .main-container {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                width: 450px;
+            }
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        .btn:focus,
+        .upload-btn:focus {
+            outline: 0 !important;
+        }
+        
+        #serverresponse {
+            color: red;
+            font-family: helvetica;
+        }
+        
+        #plusValue {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        #inputQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        #addQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #firstQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #initialStrike {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #squareValue {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #baseValue {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #afterBase {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        span {
+            font-weight: 600;
+        }
+
+        .buttons {
+            margin-top: 10px;
+        }
+
+        .sel-com{
+            margin-top:5px;
+            margin-bottom:5px;
+            text-align:center;
+        }
+
+    </style>
+    <title>OHOL Results</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+</head>
+
+<body>
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/csv">LTP Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/tick">TICK Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="https://nameless-waters-33613.herokuapp.com">STOPLOSS Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="/premium">Premium</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">Align CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currency">Align Currency CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/oresults">O Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/ohol">OHOL Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencyohol">OHOL Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencycsv">LTP Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/nifty">BATTLE GROUND</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <span class="glyphicon glyphicon-cloud-upload"></span>
+
+                        <h2>OHOL Results</h2>
+
+                        <p id='serverresponse'></p>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="squareValue" placeHolder="Set the Square Base Value" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="baseValue" placeHolder="Set the Base Value" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="plusValue" placeHolder="Please Enter the Plus Value" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="afterBase" placeHolder="Set after Base Value" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="firstQuan" placeHolder="Please Enter the first Quantity" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="inputQuan" placeHolder="Please Enter the Quantities" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="addQuan" placeHolder="Please Enter the Add Quantities" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <p style="text-align:center;">Choose a METHOD </p>
+                            <select class="form-control method">
+                              <option value="0">Add</option>
+                              <option value="1">Multiple</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control mar four" style="display:none;" id="1" placeHolder="Please Enter a Multiple value for Quantities" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control mar four" style="display:none;" id="2" placeHolder="Please Enter a Multiple value for After Base Quantities" type="text">
+                        </div>
+
+                        <div class="col-sm-12">
+                        <p style="text-align:center;">Select a COMPANY</p>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <select class="form-control sel-com">
+                                <option>NIFTY 2015</option>
+                                <option>NIFTY 2016</option>
+                                <option>TATAMOTORS</option>
+                                <option>HINDALCO</option>
+                                <option>TATAMTRDVR</option>
+                                <option>POWERGRID</option>
+                                <option>GAIL</option>
+                                <option>BHEL</option>
+                                <option>KOTAKBANK</option>
+                                <option>NTPC</option>
+                                <option>CIPLA</option>
+                                <option>BANKBARODA</option>
+                                <option>INDUSINDBK</option>
+                                <option>ICICIBANK</option>
+                                <option>SBIN</option>
+                                <option>TATASTEEL</option>
+                                <option>AXISBANK</option>
+                                <option>LUPIN</option>
+                                <option>HINDUNILVR</option>
+                                <option>SUNPHARMA</option>
+                                <option>ONGC</option>
+                                <option>BPCL</option>
+                                <option>GRASIM</option>
+                                <option>DRREDDY</option>
+                                <option>AUROPHARMA</option>
+                                <option>YESBANK</option>
+                                <option>ADANIPORTS</option>
+                                <option>ITC</option>
+                                <option>EICHERMOT</option>
+                                <option>TATAPOWER</option>
+                                <option>LT</option>
+                                <option>INFRATEL</option>
+                                <option>HDFC</option>
+                                <option>BOSCHLTD</option>
+                                <option>ULTRACEMCO</option>
+                                <option>IDEA</option>
+                                <option>TECHM</option>
+                                <option>HDFCBANK</option>
+                                <option>RELIANCE</option>
+                                <option>HEROMOTOCO</option>
+                                <option>INFY</option>
+                                <option>MARUTI</option>
+                                <option>WIPRO</option>
+                                <option>HCLTECH</option>
+                                <option>BAJAJ-AUTO</option>
+                                <option>COALINDIA</option>
+                                <option>ASIANPAINT</option>
+                                <option>ACC</option>
+                                <option>TCS</option>
+                                <option>ZEEL</option>
+                                <option>BHARTIARTL</option>
+                                <option>AMBUJACEM</option>
+                                <option>M&M</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" id="at_first">At First Price.</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" id="keep_it">Keep It.</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <button class="btn btn-lg upload-btn" type="button">GET RESULTS</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </script>
+    <script>
+        $(".method").change(function() {
+            $('.four').css('display', 'none');
+            var elem1 = parseInt($("select.method option:selected").val());
+            var elem2 = parseInt($("select.method option:selected").val());
+
+            if (elem1 == 1) {
+                $("#1").show();
+                $("#2").show();
+            }
+
+        });
+
+        var ri = function(i) {
+            return document.getElementById(i);
+        }
+
+        $('.upload-btn').on('click', function() {
+
+            $('.upload-btn').attr('disabled', 'disabled');
+
+            var squareValue = document.getElementById("squareValue").value;
+            if (isNaN(parseInt(squareValue))) {
+                alert("Please enter a valid square base value");
+                return false;
+            }
+
+            var baseValue = document.getElementById("baseValue").value;
+            if (isNaN(parseInt(baseValue))) {
+                alert("Please enter a valid plus value");
+                return false;
+            }
+
+            var afterBase = document.getElementById("afterBase").value;
+            if (isNaN(parseInt(afterBase))) {
+                alert("Please enter a valid plus value");
+                return false;
+            }
+
+            var plusValue = document.getElementById("plusValue").value;
+            if (isNaN(parseFloat(plusValue))) {
+                alert("Please enter a valid plus value");
+                return false;
+            }
+
+            var inputQuan = document.getElementById("inputQuan").value;
+            if (isNaN(parseFloat(inputQuan))) {
+                alert("Please enter a valid Quantity");
+                return false;
+            }
+
+            var addQuan = document.getElementById("addQuan").value;
+            if (isNaN(parseFloat(addQuan))) {
+                alert("Please enter a valid Quantity");
+                return false;
+            }
+
+            var firstQuan = document.getElementById("firstQuan").value;
+            if (isNaN(parseFloat(firstQuan))) {
+                alert("Please enter a valid first Quantity");
+                return false;
+            }
+
+            if ($("#1").is(":visible")) {
+                addMul = parseInt(document.getElementById("1").value);
+                nextMul = parseInt(document.getElementById("2").value);
+                if (isNaN(addMul)) {
+                    alert("Please enter a valid multiple value.");
+                    return false;
+                }
+                if (isNaN(nextMul)) {
+                    alert("Please enter a valid after multiple value.");
+                    return false;
+                }
+            } else {
+                addMul = null;
+                nextMul = null;
+            }
+
+            var whatTo = 0;
+
+            if ($("#at_first").is(":checked")) {
+                console.log("here");
+                var whatTo = 2;
+            }  
+
+            if ($("#keep_it").is(":checked")) {
+                var whatTo = 1;
+            }
+
+            console.log("What to is "+whatTo);
+
+            var sym = $(".sel-com option:selected").text();
+
+            $.ajax({
+                url: '/ohol2/' + plusValue + '/' + inputQuan + '/' + addMul + '/' + addQuan + '/' + sym + '/' +firstQuan+ '/' + whatTo+ '/'+ baseValue+ '/' +afterBase+ '/' +nextMul+ '/' +squareValue,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                success: function(finalfilename) {
+                    location.href = '/download/' + finalfilename;
+                    $('.upload-btn').removeAttr('disabled');
+                },
+                statusCode: {
+                    404: function(response) {
+                        ri('serverresponse').innerHTML = response.responseText;
+                    },
+                    503: function(response) {
+                        ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

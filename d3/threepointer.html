@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Three Pointer Algo</title>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .datePicker {
+            border: 1px solid grey;
+            border-radius: 10px;
+            margin: 0 auto;
+            width: 200px;
+            position: relative;
+            text-align: center;
+            height: 320px;
+            right: 60px;
+            top: 120px;
+        }
+
+        p{
+            text-align: center;
+        }
+
+        #getResults {
+            text-align: center;
+            background-color: teal;
+            position: relative;
+            margin: 0 auto;
+            border: 0px;
+            padding: 5px;
+            width: 150px;
+            border-radius: 5px;
+            color: white;
+            font-family: helvetica;
+            cursor: pointer;
+        }
+    </style>  
+
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="datePicker">
+        <p>Enter a stoploss value: <input type="text" id="plusValue" placeholder="Enter stoploss value." style="text-align:center"></p>
+        <p>Enter a initial quantity: <input type="text" id="initialQuantity" placeholder="Enter a initial quantity." style="text-align:center"></p>
+        <p>Enter a multiple value: <input type="text" id="multipleValue" placeholder="Enter a multiple value." style="text-align:center"></p>
+        <p>Up down average to come out: <input type="text" id="udAverage" placeholder="Up down average to come out." style="text-align:center"></p>
+        <p>Pick A Date: <input placeholder="Select a date." type="text" style="text-align:center" id="datepicker"></p>
+        <p><button id="getResults" type="button">GET RESULTS</button></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: "dd-M-y",
+                defaultDate: new Date("August 01, 2016")
+            });
+        });
+
+        $("#getResults").click(function() {
+
+            $('#getResults').attr('disabled', 'disabled');
+
+            console.log("Its been clicked!");
+
+            var plusValue = document.getElementById("plusValue").value;
+            if (isNaN(parseFloat(plusValue))) {
+                alert("Please enter a valid plus value.");
+                return false;
+            }
+
+            var initialQuantity = document.getElementById("initialQuantity").value;
+            if (isNaN(parseFloat(initialQuantity))) {
+                alert("Please enter valid initial quantity.");
+                return false;
+            }
+
+            var multipleValue = document.getElementById("multipleValue").value;
+            if (isNaN(parseFloat(multipleValue))) {
+                alert("Please enter a valid multiple value.");
+                return false;
+            }
+
+            currentDate = $("#datepicker").val().trim();
+            if (currentDate == "") {
+                alert("Please enter a valid current date.");
+                return false;
+            }
+
+            udAverage = document.getElementById("udAverage").value;
+            if (udAverage == "") {
+                alert("Please enter a valid up or below avrage value.");
+                return false;
+            }
+
+            $.ajax({
+                url: '/threePointer/' + plusValue + '/' + initialQuantity + '/' + multipleValue  + '/' + currentDate + '/' + udAverage,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                success: function(filename) {
+
+                    $('#getResults').removeAttr('disabled');
+
+                    if (filename == "No data") {
+                        alert("No data for this date.");
+                    } else {
+                        location.href = '/download/' + filename;
+                    }
+
+                },
+                statusCode: {
+                    404: function(response) {
+                        alert("Something messed up please try again!");
+                    },
+                    503: function(response) {
+                        alert("Something messed up please try again!");
+                    }
+                }
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

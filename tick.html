@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .row {
+            margin-top: 80px;
+        }
+        
+        .select-btn {
+            color: #ffffff;
+            background-color: #F89406;
+            border: none;
+        }
+        
+        .select-btn:hover,
+        .select-btn:focus,
+        .select-btn:active,
+        .select-btn.active {
+            color: #ffffff;
+            background-color: #FA8900;
+            border: none;  
+        }
+        
+        .upload-btn {
+            color: #ffffff;
+            background-color: #10B6EE;
+            border: none;
+        }
+        
+        .upload-btn:hover,
+        .upload-btn:focus,
+        .upload-btn:active,
+        .upload-btn.active {
+            color: #ffffff;
+            background-color: #6BC9E8;
+            border: none;
+        }
+        
+        h4 {
+            padding-bottom: 30px;
+            color: #B8BDC1;
+        }
+        
+        .glyphicon {
+            font-size: 5em;
+            color: #9CA3A9;
+        }
+        
+        h2 {
+            margin-top: 15px;
+            color: #68757E;
+        }
+        
+        .panel {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .main-container {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                width: 450px;
+            }
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        .btn:focus,
+        .upload-btn:focus {
+            outline: 0 !important;
+        }
+        
+        #serverresponse {
+            color: red;
+            font-family: helvetica;
+        }
+        
+        #plusValue {
+            text-align: center;
+        }
+        
+        #inputQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        #benchmark {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .buttons {
+            margin-top: 10px;
+        }
+        
+        .mar {
+            margin-top: 5px;
+        }
+        
+        .fetch-five-btn {
+            color: #ffffff;
+            background-color: #F89406;
+            border: none;
+        }
+        
+        .fetch-five-btn:hover,
+        .fetch-five-btn:focus,
+        .fetch-five-btn:active,
+        .fetch-five.active {
+            color: #ffffff;
+            background-color: #FA8900;
+            border: none;
+        }
+        
+        .fetch-five-btn {
+            color: #ffffff;
+            background-color: #33FF3C;
+            border: none;
+        }
+        
+        .fetch-five-btn:hover,
+        .fetch-five-btn:focus,
+        .fetch-five-btn:active,
+        .fetch-five-btn.active {
+            color: #ffffff;
+            background-color: #33FF77;
+            border: none;
+        }
+        
+        .sel-com {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+    </style>
+    <title>TICK Logic</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+</head>
+
+<body>
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/csv">LTP Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/tick">TICK Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="https://nameless-waters-33613.herokuapp.com">STOPLOSS Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="/premium">Premium</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">Align CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currency">Align Currency CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/oresults">O Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/ohol">OHOL Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencyohol">OHOL Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencycsv">LTP Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/nifty">BATTLE GROUND</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-cloud-upload"></span>
+                        <h2>TICK Logic</h2>
+                        <p id='serverresponse'></p>
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="plusValue" placeHolder="Please Enter the Plus Value" type="text">
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="inputQuan" placeHolder="Please Enter the Initial Quantity" type="text">
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <p style="text-align:center;">Choose a METHOD </p>
+                                <select class="form-control method">
+                                  <option value="0">Add</option>
+                                  <option value="1">Fixed</option>
+                                  <option value="2">Multiple</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input class="form-control mar four" id="0" placeHolder="Please Enter the Add value" type="text">
+                                <input class="form-control mar four" style="display:none;" id="2" placeHolder="Please Enter the Multiple value" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <select class="form-control sel-com">
+                                <option>NIFTY 50</option>
+                                <option>BANKNIFTY</option>
+                                <option>TATAMOTORS</option>
+                                <option>HINDALCO</option>
+                                <option>TATAMTRDVR</option>
+                                <option>POWERGRID</option>
+                                <option>GAIL</option>
+                                <option>BHEL</option>
+                                <option>KOTAKBANK</option>
+                                <option>NTPC</option>
+                                <option>CIPLA</option>
+                                <option>BANKBARODA</option>
+                                <option>INDUSINDBK</option>
+                                <option>ICICIBANK</option>
+                                <option>SBIN</option>
+                                <option>TATASTEEL</option>
+                                <option>AXISBANK</option>
+                                <option>LUPIN</option>
+                                <option>HINDUNILVR</option>
+                                <option>SUNPHARMA</option>
+                                <option>ONGC</option>
+                                <option>BPCL</option>
+                                <option>GRASIM</option>
+                                <option>DRREDDY</option>
+                                <option>AUROPHARMA</option>
+                                <option>YESBANK</option>
+                                <option>ADANIPORTS</option>
+                                <option>ITC</option>
+                                <option>EICHERMOT</option>
+                                <option>TATAPOWER</option>
+                                <option>LT</option>
+                                <option>INFRATEL</option>
+                                <option>HDFC</option>
+                                <option>BOSCHLTD</option>
+                                <option>ULTRACEMCO</option>
+                                <option>IDEA</option>
+                                <option>TECHM</option>
+                                <option>HDFCBANK</option>
+                                <option>RELIANCE</option>
+                                <option>HEROMOTOCO</option>
+                                <option>INFY</option>
+                                <option>MARUTI</option>
+                                <option>WIPRO</option>
+                                <option>HCLTECH</option>
+                                <option>BAJAJ-AUTO</option>
+                                <option>COALINDIA</option>
+                                <option>ASIANPAINT</option>
+                                <option>ACC</option>
+                                <option>TCS</option>
+                                <option>ZEEL</option>
+                                <option>BHARTIARTL</option>
+                                <option>AMBUJACEM</option>
+                                <option>M&M</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <button class="btn btn-lg upload-btn" type="button">GET RESULTS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js">
+    </script>
+    <script>
+        var ri = function(i) {
+            return document.getElementById(i);
+        }
+
+        $(".method").change(function() {
+            $(".four").innerHTML = "";
+            addMul = null;
+            $('.four').css('display', 'none');
+            var elem = parseInt($("select.method option:selected").val());
+            if (elem == 2) {
+                $("#2").show();
+            }
+            if (elem == 0) {
+                $("#0").show();
+            }
+        });
+
+        $('.upload-btn').on('click', function() {
+
+            $('.upload-btn').attr('disabled', 'disabled');
+
+            var plusValue = document.getElementById("plusValue").value;
+            if (isNaN(parseFloat(plusValue))) {
+                alert("Please enter a valid plus value");
+                return false;
+            }
+            var inputQuan = document.getElementById("inputQuan").value;
+            if (isNaN(parseFloat(inputQuan))) {
+                alert("Please enter a valid Quantity");
+                return false;
+            }
+
+            var typo = parseInt($("select.method option:selected").val());
+
+            if (typo == 0) {
+                var addValue = document.getElementById("0").value;
+                if (isNaN(parseInt(addValue))) {
+                    alert("Please enter a add value");
+                    return false;
+                } else {
+                    addMul = addValue;
+                }
+            }
+
+            if (typo == 2) {
+                var mulValue = document.getElementById("2").value;
+                if (isNaN(parseFloat(mulValue))) {
+                    alert("Please enter a multiple value");
+                    return false;
+                } else {
+                    addMul = mulValue;
+                }
+            }
+
+            var companyname = $(".sel-com option:selected").text();
+
+            $.ajax({
+                url: '/tick/' + companyname + '/' + plusValue + '/' + inputQuan + '/' + typo + '/' + addMul,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                success: function(finalfilename) {
+                    location.href = '/download/' + finalfilename;
+                    $('.upload-btn').removeAttr('disabled');
+                },
+                statusCode: {
+                    404: function(response) {
+                        ri('serverresponse').innerHTML = response.responseText;
+                    },
+                    503: function(response) {
+                        ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

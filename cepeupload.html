@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .hideThem{
+            display:none;
+        }
+
+        .get-btn {
+            color: #ffffff;
+            background-color: #10B6EE;
+            border: none;
+        }
+        
+        .get-btn:hover,
+        .get-btn:focus,
+        .get-btn:active, 
+        .get-btn.active {
+            color: #ffffff;
+            background-color: #6BC9E8;
+            border: none;
+        }
+
+    </style>
+    <title>GET CEPE</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/csv">LTP Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/tick">TICK Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://nameless-waters-33613.herokuapp.com">STOPLOSS Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/premium">Premium</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">Align CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currency">Align Currency CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/oresults">O Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/ohol">OHOL Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencyohol">OHOL Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencycsv">LTP Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/nifty">BATTLE GROUND</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<select name="instrumentType" id="instrumentType"> 
+        <option value="select"> Select Instrument Type </option>
+        <option value="FUTIDX"> Index Futures </option>
+        <option value="FUTSTK"> Stock Futures </option>
+        <option value="OPTIDX"> Index Options </option>
+        <option value="OPTSTK"> Stock Options </option>
+</select>
+<br>
+<!-- index futures begin -->
+<select size="1"  id="FUTIDX" class="hideThem">
+    <option value="select"> Select Symbol </option>
+    <option value="a">---- Major Indices ----</option>
+    <option value="NIFTY">NIFTY 50</option>
+    <option value="NIFTYMID50">NIFTY MIDCAP 50</option>
+    <option value="BANKNIFTY">BANK NIFTY</option>
+    <option value="NIFTYINFRA">NIFTY INFRA</option>
+    <option value="NIFTYIT">NIFTY IT</option>
+    <option value="NIFTYPSE">NIFTY PSE</option>
+    <option value="a">---- Global Indices ----</option>
+    <option value="S&amp;P500">S&amp;P 500</option>
+    <option value="DJIA">DJIA</option><option value="FTSE100">FTSE100</option>
+</select>
+<br>
+
+<select size="1" id="FUTSTK" class="hideThem">
+    <option value="select"> Select Symbol </option>
+    <option value="3IINFOTECH">3IINFOTECH</option>
+    <option value="ABAN">ABAN</option>
+    <option value="ABB">ABB</option>
+    <option value="ABGSHIP">ABGSHIP</option>
+    <option value="ABIRLANUVO">ABIRLANUVO</option>
+    <option value="ACC">ACC</option>
+    <option value="ADANIENT">ADANIENT</option>
+    <option value="ADANIPORTS">ADANIPORTS</option>
+    <option value="ADANIPOWER">ADANIPOWER</option>
+    <option value="ADLABSFILM">ADLABSFILM</option>
+    <option value="AIAENG">AIAENG</option>
+    <option value="AIRDECCAN">AIRDECCAN</option>
+    <option value="AJANTPHARM">AJANTPHARM</option>
+    <option value="AKRUTI">AKRUTI</option>
+    <option value="ALBK">ALBK</option>
+    <option value="ALOKTEXT">ALOKTEXT</option>
+    <option value="ALSTOMT&amp;D">ALSTOMT&amp;D</option>
+    <option value="AMARAJABAT">AMARAJABAT</option>
+    <option value="AMBUJACEM">AMBUJACEM</option>
+    <option value="AMTEKAUTO">AMTEKAUTO</option>
+    <option value="ANDHRABANK">ANDHRABANK</option>
+    <option value="ANSALINFRA">ANSALINFRA</option>
+    <option value="APIL">APIL</option>
+    <option value="APOLLOHOSP">APOLLOHOSP</option>
+    <option value="APOLLOTYRE">APOLLOTYRE</option>
+    <option value="APTECHT">APTECHT</option>
+    <option value="AREVAT&amp;D">AREVAT&amp;D</option>
+    <option value="ARVIND">ARVIND</option>
+    <option value="ARVINDMILL">ARVINDMILL</option>
+    <option value="ASHOKLEY">ASHOKLEY</option>
+    <option value="ASIANPAINT">ASIANPAINT</option>
+    <option value="AUROPHARMA">AUROPHARMA</option>
+    <option value="AXISBANK">AXISBANK</option>
+    <option value="BAJAJ-AUTO">BAJAJ-AUTO</option>
+    <option value="BAJAJAUTO">BAJAJAUTO</option>
+    <option value="BAJAJHIND">BAJAJHIND</option>
+    <option value="BAJAJHLDNG">BAJAJHLDNG</option>
+    <option value="BAJFINANCE">BAJFINANCE</option>
+    <option value="BALAJITELE">BALAJITELE</option>
+    <option value="BALLARPUR">BALLARPUR</option>
+    <option value="BALRAMCHIN">BALRAMCHIN</option>
+    <option value="BANKBARODA">BANKBARODA</option>
+    <option value="BANKINDIA">BANKINDIA</option>
+    <option value="BATAINDIA">BATAINDIA</option>
+    <option value="BEL">BEL</option>
+    <option value="BEML">BEML</option>
+    <option value="BFUTILITIE">BFUTILITIE</option>
+    <option value="BGRENERGY">BGRENERGY</option>
+    <option value="BHARATFORG">BHARATFORG</option>
+    <option value="BHARTI">BHARTI</option>
+    <option value="BHARTIARTL">BHARTIARTL</option>
+    <option value="BHEL">BHEL</option>
+    <option value="BHUSANSTL">BHUSANSTL</option>
+    <option value="BILT">BILT</option>
+    <option value="BINDALAGRO">BINDALAGRO</option>
+    <option value="BIOCON">BIOCON</option>
+    <option value="BIRLACORPN">BIRLACORPN</option>
+    <option value="BIRLAJUTE">BIRLAJUTE</option>
+    <option value="BOMDYEING">BOMDYEING</option>
+    <option value="BONGAIREFN">BONGAIREFN</option>
+    <option value="BOSCHLTD">BOSCHLTD</option>
+    <option value="BPCL">BPCL</option>
+    <option value="BRFL">BRFL</option>
+    <option value="BRIGADE">BRIGADE</option>
+    <option value="BRITANNIA">BRITANNIA</option>
+    <option value="BSES">BSES</option>
+    <option value="CADILAHC">CADILAHC</option>
+    <option value="CAIRN">CAIRN</option>
+    <option value="CANBK">CANBK</option>
+    <option value="CASTROLIND">CASTROLIND</option>
+    <option value="CEATLTD">CEATLTD</option>
+    <option value="CENTRALBK">CENTRALBK</option>
+    <option value="CENTURYTEX">CENTURYTEX</option>
+    <option value="CESC">CESC</option>
+    <option value="CHAMBLFERT">CHAMBLFERT</option>
+    <option value="CHENNPETRO">CHENNPETRO</option>
+    <option value="CIPLA">CIPLA</option>
+    <option value="CMC">CMC</option>
+    <option value="COALINDIA">COALINDIA</option>
+    <option value="COCHINREFN">COCHINREFN</option>
+    <option value="COLGATE">COLGATE</option>
+    <option value="COLPAL">COLPAL</option>
+    <option value="CONCOR">CONCOR</option>
+    <option value="COREEDUTEC">COREEDUTEC</option>
+    <option value="COREPROTEC">COREPROTEC</option>
+    <option value="CORPBANK">CORPBANK</option>
+    <option value="CROMPGREAV">CROMPGREAV</option>
+    <option value="CUMMINSIND">CUMMINSIND</option>
+    <option value="DABUR">DABUR</option>
+    <option value="DCB">DCB</option>
+    <option value="DCBBANK">DCBBANK</option>
+    <option value="DCHL">DCHL</option>
+    <option value="DELTACORP">DELTACORP</option>
+    <option value="DENABANK">DENABANK</option>
+    <option value="DHANBANK">DHANBANK</option>
+    <option value="DHFL">DHFL</option>
+    <option value="DIGITALEQP">DIGITALEQP</option>
+    <option value="DISHTV">DISHTV</option>
+    <option value="DIVISLAB">DIVISLAB</option>
+    <option value="DLF">DLF</option>
+    <option value="DRREDDY">DRREDDY</option>
+    <option value="EDELWEISS">EDELWEISS</option>
+    <option value="EDUCOMP">EDUCOMP</option>
+    <option value="EICHERMOT">EICHERMOT</option>
+    <option value="EKC">EKC</option>
+    <option value="ENGINERSIN">ENGINERSIN</option>
+    <option value="ESCORTS">ESCORTS</option>
+    <option value="ESSAROIL">ESSAROIL</option>
+    <option value="EVERONN">EVERONN</option>
+    <option value="EXIDEIND">EXIDEIND</option>
+    <option value="FEDERALBNK">FEDERALBNK</option>
+    <option value="FINANTECH">FINANTECH</option>
+    <option value="FORTIS">FORTIS</option>
+    <option value="FRL">FRL</option>
+    <option value="FSL">FSL</option>
+    <option value="GAIL">GAIL</option>
+    <option value="GBN">GBN</option>
+    <option value="GDL">GDL</option>
+    <option value="GESCOCORP">GESCOCORP</option>
+    <option value="GESHIP">GESHIP</option>
+    <option value="GESHIPPING">GESHIPPING</option>
+    <option value="GITANJALI">GITANJALI</option>
+    <option value="GLAXO">GLAXO</option>
+    <option value="GLENMARK">GLENMARK</option>
+    <option value="GMDCLTD">GMDCLTD</option>
+    <option value="GMRINFRA">GMRINFRA</option>
+    <option value="GNFC">GNFC</option>
+    <option value="GODREJCP">GODREJCP</option>
+    <option value="GODREJIND">GODREJIND</option>
+    <option value="GRASIM">GRASIM</option>
+    <option value="GRANULES">GRANULES</option>
+    <option value="GSKCONS">GSKCONS</option>
+    <option value="GSPL">GSPL</option>
+    <option value="GTL">GTL</option>
+    <option value="GTLINFRA">GTLINFRA</option>
+    <option value="GTOFFSHORE">GTOFFSHORE</option>
+    <option value="GUJALKALI">GUJALKALI</option>
+    <option value="GUJAMBCEM">GUJAMBCEM</option>
+    <option value="GUJFLUORO">GUJFLUORO</option>
+    <option value="GVKPIL">GVKPIL</option>
+    <option value="HAVELLS">HAVELLS</option>
+    <option value="HCC">HCC</option>
+    <option value="HCL-INSYS">HCL-INSYS</option>
+    <option value="HCLTECH">HCLTECH</option>
+    <option value="HDFC">HDFC</option>
+    <option value="HDFCBANK">HDFCBANK</option>
+    <option value="HDIL">HDIL</option>
+    <option value="HEROHONDA">HEROHONDA</option>
+    <option value="HEROMOTOCO">HEROMOTOCO</option>
+    <option value="HEXAWARE">HEXAWARE</option>
+    <option value="HINDALC0">HINDALC0</option>
+    <option value="HINDALCO">HINDALCO</option>
+    <option value="HINDLEVER">HINDLEVER</option>
+    <option value="HINDOILEXP">HINDOILEXP</option>
+    <option value="HINDPETRO">HINDPETRO</option>
+    <option value="HINDUJATMT">HINDUJATMT</option>
+    <option value="HINDUJAVEN">HINDUJAVEN</option>
+    <option value="HINDUNILVR">HINDUNILVR</option>
+    <option value="HINDZINC">HINDZINC</option>
+    <option value="HOTELEELA">HOTELEELA</option>
+    <option value="HTMT">HTMT</option>
+    <option value="HTMTGLOBAL">HTMTGLOBAL</option>
+    <option value="I-FLEX">I-FLEX</option>
+    <option value="IBN18">IBN18</option>
+    <option value="IBREALEST">IBREALEST</option>
+    <option value="IBULHSGFIN">IBULHSGFIN</option>
+    <option value="ICICI">ICICI</option>
+    <option value="ICICIBANK">ICICIBANK</option>
+    <option value="ICIL">ICIL</option>
+    <option value="ICSA">ICSA</option>
+    <option value="IDBI">IDBI</option>
+    <option value="IDEA">IDEA</option>
+    <option value="IDFC">IDFC</option>
+    <option value="IDFCBANK">IDFCBANK</option>
+    <option value="IFCI">IFCI</option>
+    <option value="IGL">IGL</option>
+    <option value="INDHOTEL">INDHOTEL</option>
+    <option value="INDIACEM">INDIACEM</option>
+    <option value="INDIAINFO">INDIAINFO</option>
+    <option value="INDIANB">INDIANB</option>
+    <option value="INDRAYON">INDRAYON</option>
+    <option value="INDUSINDBK">INDUSINDBK</option>
+    <option value="INFOSYSTCH">INFOSYSTCH</option>
+    <option value="INFRATEL">INFRATEL</option>
+    <option value="INFY">INFY</option>
+    <option value="IOB">IOB</option>
+    <option value="IOC">IOC</option>
+    <option value="IPCL">IPCL</option>
+    <option value="IRB">IRB</option>
+    <option value="ISPATIND">ISPATIND</option>
+    <option value="ITC">ITC</option>
+    <option value="IVRCLINFRA">IVRCLINFRA</option>
+    <option value="IVRPRIME">IVRPRIME</option>
+    <option value="J&amp;KBANK">J&amp;KBANK</option>
+    <option value="JETAIRWAYS">JETAIRWAYS</option>
+    <option value="JINDALSAW">JINDALSAW</option>
+    <option value="JINDALSTEL">JINDALSTEL</option>
+    <option value="JINDALSWHL">JINDALSWHL</option>
+    <option value="JISLJALEQS">JISLJALEQS</option>
+    <option value="JPASSOCIAT">JPASSOCIAT</option>
+    <option value="JPHYDRO">JPHYDRO</option>
+    <option value="JPPOWER">JPPOWER</option>
+    <option value="JSL">JSL</option>
+    <option value="JSTAINLESS">JSTAINLESS</option>
+    <option value="JSWENERGY">JSWENERGY</option>
+    <option value="JSWISPAT">JSWISPAT</option>
+    <option value="JSWSTEEL">JSWSTEEL</option>
+    <option value="JUBLFOOD">JUBLFOOD</option>
+    <option value="JUSTDIAL">JUSTDIAL</option>
+    <option value="KESORAMIND">KESORAMIND</option>
+    <option value="KFA">KFA</option>
+    <option value="KIRLOSKCUM">KIRLOSKCUM</option>
+    <option value="KLGSYSTEL">KLGSYSTEL</option>
+    <option value="KOTAKBANK">KOTAKBANK</option>
+    <option value="KPIT">KPIT</option>
+    <option value="KSCL">KSCL</option>
+    <option value="KSK">KSK</option>
+    <option value="KSOILS">KSOILS</option>
+    <option value="KTKBANK">KTKBANK</option>
+    <option value="L&amp;T">L&amp;T</option>
+    <option value="L&amp;TFH">L&amp;TFH</option>
+    <option value="LAXMIMACH">LAXMIMACH</option>
+    <option value="LICHSGFIN">LICHSGFIN</option>
+    <option value="LITL">LITL</option>
+    <option value="LT">LT</option>
+    <option value="LUPIN">LUPIN</option>
+    <option value="M&amp;M">M&amp;M</option>
+    <option value="M&amp;MFIN">M&amp;MFIN</option>
+    <option value="MAHLIFE">MAHLIFE</option>
+    <option value="MAHSEAMLES">MAHSEAMLES</option>
+    <option value="MARICO">MARICO</option>
+    <option value="MARUTI">MARUTI</option>
+    <option value="MASTEK">MASTEK</option>
+    <option value="MATRIXLABS">MATRIXLABS</option>
+    <option value="MAX">MAX</option>
+    <option value="MCDOWELL-N">MCDOWELL-N</option>
+    <option value="MCLEODRUSS">MCLEODRUSS</option>
+    <option value="MERCATOR">MERCATOR</option>
+    <option value="MIC">MIC</option>
+    <option value="MICO">MICO</option>
+    <option value="MINDTREE">MINDTREE</option>
+    <option value="MLL">MLL</option>
+    <option value="MONNETISPA">MONNETISPA</option>
+    <option value="MOSERBAER">MOSERBAER</option>
+    <option value="MOTHERSUMI">MOTHERSUMI</option>
+    <option value="MPHASIS">MPHASIS</option>
+    <option value="MPHASISBFL">MPHASISBFL</option>
+    <option value="MRF">MRF</option>
+    <option value="MRPL">MRPL</option>
+    <option value="MTNL">MTNL</option>
+    <option value="MUNDRAPORT">MUNDRAPORT</option>
+    <option value="NAGARCONST">NAGARCONST</option>
+    <option value="NAGARFERT">NAGARFERT</option>
+    <option value="NAGAROIL">NAGAROIL</option>
+    <option value="NATIONALUM">NATIONALUM</option>
+    <option value="NAUKRI">NAUKRI</option>
+    <option value="NBVENTURES">NBVENTURES</option>
+    <option value="NCC">NCC</option>
+    <option value="NDTV">NDTV</option>
+    <option value="NETWORK18">NETWORK18</option>
+    <option value="NEYVELILIG">NEYVELILIG</option>
+    <option value="NHPC">NHPC</option>
+    <option value="NICOLASPIR">NICOLASPIR</option>
+    <option value="NIIT">NIIT</option>
+    <option value="NIITLTD">NIITLTD</option>
+    <option value="NIITTECH">NIITTECH</option>
+    <option value="NIPPONDENR">NIPPONDENR</option>
+    <option value="NMDC">NMDC</option>
+    <option value="NOIDATOLL">NOIDATOLL</option>
+    <option value="NTPC">NTPC</option>
+    <option value="NUCLEUS">NUCLEUS</option>
+    <option value="OFSS">OFSS</option>
+    <option value="OIL">OIL</option>
+    <option value="OMAXE">OMAXE</option>
+    <option value="ONGC">ONGC</option>
+    <option value="ONMOBILE">ONMOBILE</option>
+    <option value="OPTOCIRCUI">OPTOCIRCUI</option>
+    <option value="ORBITCORP">ORBITCORP</option>
+    <option value="ORCHIDCHEM">ORCHIDCHEM</option>
+    <option value="ORIENTBANK">ORIENTBANK</option>
+    <option value="PAGEIND">PAGEIND</option>
+    <option value="PANTALOONR">PANTALOONR</option>
+    <option value="PARSVNATH">PARSVNATH</option>
+    <option value="PATELENG">PATELENG</option>
+    <option value="PATNI">PATNI</option>
+    <option value="PCJEWELLER">PCJEWELLER</option>
+    <option value="PENINLAND">PENINLAND</option>
+    <option value="PETRONET">PETRONET</option>
+    <option value="PFC">PFC</option>
+    <option value="PFIZER">PFIZER</option>
+    <option value="PIDILITIND">PIDILITIND</option>
+    <option value="PIRHEALTH">PIRHEALTH</option>
+    <option value="PNB">PNB</option>
+    <option value="POLARIS">POLARIS</option>
+    <option value="POWERGRID">POWERGRID</option>
+    <option value="PRAJIND">PRAJIND</option>
+    <option value="PRISMCEM">PRISMCEM</option>
+    <option value="PTC">PTC</option>
+    <option value="PUNJLLOYD">PUNJLLOYD</option>
+    <option value="PURVA">PURVA</option>
+    <option value="RAJESHEXPO">RAJESHEXPO</option>
+    <option value="RANBAXY">RANBAXY</option>
+    <option value="RAYMOND">RAYMOND</option>
+    <option value="RCOM">RCOM</option>
+    <option value="RECLTD">RECLTD</option>
+    <option value="REDINGTON">REDINGTON</option>
+    <option value="REL">REL</option>
+    <option value="RELCAPITAL">RELCAPITAL</option>
+    <option value="RELIANCE">RELIANCE</option>
+    <option value="RELINFRA">RELINFRA</option>
+    <option value="RELMEDIA">RELMEDIA</option>
+    <option value="RELPETRO">RELPETRO</option>
+    <option value="RENUKA">RENUKA</option>
+    <option value="RIIL">RIIL</option>
+    <option value="RNRL">RNRL</option>
+    <option value="ROLTA">ROLTA</option>
+    <option value="RPL">RPL</option>
+    <option value="RPOWER">RPOWER</option>
+    <option value="RUCHISOYA">RUCHISOYA</option>
+    <option value="SAIL">SAIL</option>
+    <option value="SAMRUDDHI">SAMRUDDHI</option>
+    <option value="SASKEN">SASKEN</option>
+    <option value="SATYAMCOMP">SATYAMCOMP</option>
+    <option value="SBIN">SBIN</option>
+    <option value="SCI">SCI</option>
+    <option value="SESAGOA">SESAGOA</option>
+    <option value="SHREECEM">SHREECEM</option>
+    <option value="SIEMENS">SIEMENS</option>
+    <option value="SINTEX">SINTEX</option>
+    <option value="SKSMICRO">SKSMICRO</option>
+    <option value="SKUMARSYNF">SKUMARSYNF</option>
+    <option value="SOBHA">SOBHA</option>
+    <option value="SOUTHBANK">SOUTHBANK</option>
+    <option value="SREINFRA">SREINFRA</option>
+    <option value="SREINTFIN">SREINTFIN</option>
+    <option value="SRF">SRF</option>
+    <option value="SRTRANSFIN">SRTRANSFIN</option>
+    <option value="SSLT">SSLT</option>
+    <option value="STAR">STAR</option>
+    <option value="STER">STER</option>
+    <option value="STERLINBIO">STERLINBIO</option>
+    <option value="STROPTICAL">STROPTICAL</option>
+    <option value="STRTECH">STRTECH</option>
+    <option value="SUNPHARMA">SUNPHARMA</option>
+    <option value="SUNTV">SUNTV</option>
+    <option value="SUZLON">SUZLON</option>
+    <option value="SYNDIBANK">SYNDIBANK</option>
+    <option value="TATACHEM">TATACHEM</option>
+    <option value="TATACOFFEE">TATACOFFEE</option>
+    <option value="TATACOMM">TATACOMM</option>
+    <option value="TATAELXSI">TATAELXSI</option>
+    <option value="TATAGLOBAL">TATAGLOBAL</option>
+    <option value="TATAMOTORS">TATAMOTORS</option>
+    <option value="TATAMTRDVR">TATAMTRDVR</option>
+    <option value="TATAPOWER">TATAPOWER</option>
+    <option value="TATASTEEL">TATASTEEL</option>
+    <option value="TATATEA">TATATEA</option>
+    <option value="TCS">TCS</option>
+    <option value="TECHM">TECHM</option>
+    <option value="TELCO">TELCO</option>
+    <option value="THERMAX">THERMAX</option>
+    <option value="TISCO">TISCO</option>
+    <option value="TITAN">TITAN</option>
+    <option value="TORNTPHARM">TORNTPHARM</option>
+    <option value="TORNTPOWER">TORNTPOWER</option>
+    <option value="TRIVENI">TRIVENI</option>
+    <option value="TTKPRESTIG">TTKPRESTIG</option>
+    <option value="TTML">TTML</option>
+    <option value="TULIP">TULIP</option>
+    <option value="TV-18">TV-18</option>
+    <option value="TV18BRDCST">TV18BRDCST</option>
+    <option value="TVSMOTOR">TVSMOTOR</option>
+    <option value="UBL">UBL</option>
+    <option value="UCOBANK">UCOBANK</option>
+    <option value="ULTRACEMCO">ULTRACEMCO</option>
+    <option value="UNIONBANK">UNIONBANK</option>
+    <option value="UNIPHOS">UNIPHOS</option>
+    <option value="UNITECH">UNITECH</option>
+    <option value="UPL">UPL</option>
+    <option value="UTIBANK">UTIBANK</option>
+    <option value="UTVSOF">UTVSOF</option>
+    <option value="VDOCONINTL">VDOCONINTL</option>
+    <option value="VEDL">VEDL</option>
+    <option value="VIDEOIND">VIDEOIND</option>
+    <option value="VIJAYABANK">VIJAYABANK</option>
+    <option value="VIPIND">VIPIND</option>
+    <option value="VOLTAMP">VOLTAMP</option>
+    <option value="VOLTAS">VOLTAS</option>
+    <option value="VSNL">VSNL</option>
+    <option value="WALCHANNAG">WALCHANNAG</option>
+    <option value="WELCORP">WELCORP</option>
+    <option value="WELGUJ">WELGUJ</option>
+    <option value="WIPRO">WIPRO</option>
+    <option value="WOCKPHARMA">WOCKPHARMA</option>
+    <option value="WWIL">WWIL</option>
+    <option value="YESBANK">YESBANK</option>
+    <option value="ZEEL">ZEEL</option>
+    <option value="ZEETELE">ZEETELE</option>
+</select>
+<br>
+
+<!-- stock future ends -->
+
+
+
+
+<!-- index options begin -->
+<select size="1" id="OPTIDX" class="hideThem">
+    <option value="select"> Select Symbol </option>
+    <option value="a">---- Major Indices ----</option>
+    <option value="NIFTY">NIFTY 50</option>
+    <option value="NIFTYMID50">NIFTY MIDCAP 50</option>
+    <option value="BANKNIFTY">BANK NIFTY</option>
+    <option value="NIFTYINFRA">NIFTY INFRA</option>
+    <option value="NIFTYIT">NIFTY IT</option>
+    <option value="NIFTYPSE">NIFTY PSE</option>
+    <option value="a">---- Global Indices ----</option>
+    <option value="S&amp;P500">S&amp;P 500</option>
+    <option value="DJIA">DJIA</option>
+    <option value="FTSE100">FTSE100</option>
+</select>
+<br>
+<!-- index options ends -->
+
+
+<!-- stock options begin -->
+
+<select size="1" id="OPTSTK" class="hideThem">
+    <option value="select"> Select Symbol </option>
+    <option value="3IINFOTECH">3IINFOTECH</option>
+    <option value="ABAN">ABAN</option>
+    <option value="ABB">ABB</option>
+    <option value="ABGSHIP">ABGSHIP</option>
+    <option value="ABIRLANUVO">ABIRLANUVO</option>
+    <option value="ACC">ACC</option>
+    <option value="ADANIENT">ADANIENT</option>
+    <option value="ADANIPORTS">ADANIPORTS</option>
+    <option value="ADANIPOWER">ADANIPOWER</option>
+    <option value="ADLABSFILM">ADLABSFILM</option>
+    <option value="AIAENG">AIAENG</option>
+    <option value="AIRDECCAN">AIRDECCAN</option>
+    <option value="AJANTPHARM">AJANTPHARM</option>
+    <option value="AKRUTI">AKRUTI</option>
+    <option value="ALBK">ALBK</option>
+    <option value="ALOKTEXT">ALOKTEXT</option>
+    <option value="ALSTOMT&amp;D">ALSTOMT&amp;D</option>
+    <option value="AMARAJABAT">AMARAJABAT</option>
+    <option value="AMBUJACEM">AMBUJACEM</option>
+    <option value="AMTEKAUTO">AMTEKAUTO</option>
+    <option value="ANDHRABANK">ANDHRABANK</option>
+    <option value="ANSALINFRA">ANSALINFRA</option>
+    <option value="APIL">APIL</option>
+    <option value="APOLLOHOSP">APOLLOHOSP</option>
+    <option value="APOLLOTYRE">APOLLOTYRE</option>
+    <option value="APTECHT">APTECHT</option>
+    <option value="AREVAT&amp;D">AREVAT&amp;D</option>
+    <option value="ARVIND">ARVIND</option>
+    <option value="ARVINDMILL">ARVINDMILL</option>
+    <option value="ASHOKLEY">ASHOKLEY</option>
+    <option value="ASIANPAINT">ASIANPAINT</option>
+    <option value="AUROPHARMA">AUROPHARMA</option>
+    <option value="AXISBANK">AXISBANK</option>
+    <option value="BAJAJ-AUTO">BAJAJ-AUTO</option>
+    <option value="BAJAJAUTO">BAJAJAUTO</option>
+    <option value="BAJAJHIND">BAJAJHIND</option>
+    <option value="BAJAJHLDNG">BAJAJHLDNG</option>
+    <option value="BAJFINANCE">BAJFINANCE</option>
+    <option value="BALAJITELE">BALAJITELE</option>
+    <option value="BALLARPUR">BALLARPUR</option>
+    <option value="BALRAMCHIN">BALRAMCHIN</option>
+    <option value="BANKBARODA">BANKBARODA</option>
+    <option value="BANKINDIA">BANKINDIA</option>
+    <option value="BATAINDIA">BATAINDIA</option>
+    <option value="BEL">BEL</option>
+    <option value="BEML">BEML</option>
+    <option value="BFUTILITIE">BFUTILITIE</option>
+    <option value="BGRENERGY">BGRENERGY</option>
+    <option value="BHARATFORG">BHARATFORG</option>
+    <option value="BHARTI">BHARTI</option>
+    <option value="BHARTIARTL">BHARTIARTL</option>
+    <option value="BHEL">BHEL</option>
+    <option value="BHUSANSTL">BHUSANSTL</option>
+    <option value="BILT">BILT</option>
+    <option value="BINDALAGRO">BINDALAGRO</option>
+    <option value="BIOCON">BIOCON</option>
+    <option value="BIRLACORPN">BIRLACORPN</option>
+    <option value="BIRLAJUTE">BIRLAJUTE</option>
+    <option value="BOMDYEING">BOMDYEING</option>
+    <option value="BONGAIREFN">BONGAIREFN</option>
+    <option value="BOSCHLTD">BOSCHLTD</option>
+    <option value="BPCL">BPCL</option>
+    <option value="BRFL">BRFL</option>
+    <option value="BRIGADE">BRIGADE</option>
+    <option value="BRITANNIA">BRITANNIA</option>
+    <option value="BSES">BSES</option>
+    <option value="CADILAHC">CADILAHC</option>
+    <option value="CAIRN">CAIRN</option>
+    <option value="CANBK">CANBK</option>
+    <option value="CASTROLIND">CASTROLIND</option>
+    <option value="CEATLTD">CEATLTD</option>
+    <option value="CENTRALBK">CENTRALBK</option>
+    <option value="CENTURYTEX">CENTURYTEX</option>
+    <option value="CESC">CESC</option>
+    <option value="CHAMBLFERT">CHAMBLFERT</option>
+    <option value="CHENNPETRO">CHENNPETRO</option>
+    <option value="CIPLA">CIPLA</option>
+    <option value="CMC">CMC</option>
+    <option value="COALINDIA">COALINDIA</option>
+    <option value="COCHINREFN">COCHINREFN</option>
+    <option value="COLGATE">COLGATE</option>
+    <option value="COLPAL">COLPAL</option>
+    <option value="CONCOR">CONCOR</option>
+    <option value="COREEDUTEC">COREEDUTEC</option>
+    <option value="COREPROTEC">COREPROTEC</option>
+    <option value="CORPBANK">CORPBANK</option>
+    <option value="CROMPGREAV">CROMPGREAV</option>
+    <option value="CUMMINSIND">CUMMINSIND</option>
+    <option value="DABUR">DABUR</option>
+    <option value="DCB">DCB</option>
+    <option value="DCBBANK">DCBBANK</option>
+    <option value="DCHL">DCHL</option>
+    <option value="DELTACORP">DELTACORP</option>
+    <option value="DENABANK">DENABANK</option>
+    <option value="DHANBANK">DHANBANK</option>
+    <option value="DHFL">DHFL</option>
+    <option value="DIGITALEQP">DIGITALEQP</option>
+    <option value="DISHTV">DISHTV</option>
+    <option value="DIVISLAB">DIVISLAB</option>
+    <option value="DLF">DLF</option>
+    <option value="DRREDDY">DRREDDY</option>
+    <option value="EDELWEISS">EDELWEISS</option>
+    <option value="EDUCOMP">EDUCOMP</option>
+    <option value="EICHERMOT">EICHERMOT</option>
+    <option value="EKC">EKC</option>
+    <option value="ENGINERSIN">ENGINERSIN</option>
+    <option value="ESCORTS">ESCORTS</option>
+    <option value="ESSAROIL">ESSAROIL</option>
+    <option value="EVERONN">EVERONN</option>
+    <option value="EXIDEIND">EXIDEIND</option>
+    <option value="FEDERALBNK">FEDERALBNK</option>
+    <option value="FINANTECH">FINANTECH</option>
+    <option value="FORTIS">FORTIS</option>
+    <option value="FRL">FRL</option>
+    <option value="FSL">FSL</option>
+    <option value="GAIL">GAIL</option>
+    <option value="GBN">GBN</option>
+    <option value="GDL">GDL</option>
+    <option value="GESCOCORP">GESCOCORP</option>
+    <option value="GESHIP">GESHIP</option>
+    <option value="GESHIPPING">GESHIPPING</option>
+    <option value="GITANJALI">GITANJALI</option>
+    <option value="GLAXO">GLAXO</option>
+    <option value="GLENMARK">GLENMARK</option>
+    <option value="GMDCLTD">GMDCLTD</option>
+    <option value="GMRINFRA">GMRINFRA</option>
+    <option value="GNFC">GNFC</option>
+    <option value="GODREJCP">GODREJCP</option>
+    <option value="GODREJIND">GODREJIND</option>
+    <option value="GRASIM">GRASIM</option>
+    <option value="GRANULES">GRANULES</option>
+    <option value="GSKCONS">GSKCONS</option>
+    <option value="GSPL">GSPL</option>
+    <option value="GTL">GTL</option>
+    <option value="GTLINFRA">GTLINFRA</option>
+    <option value="GTOFFSHORE">GTOFFSHORE</option>
+    <option value="GUJALKALI">GUJALKALI</option>
+    <option value="GUJAMBCEM">GUJAMBCEM</option>
+    <option value="GUJFLUORO">GUJFLUORO</option>
+    <option value="GVKPIL">GVKPIL</option>
+    <option value="HAVELLS">HAVELLS</option>
+    <option value="HCC">HCC</option>
+    <option value="HCL-INSYS">HCL-INSYS</option>
+    <option value="HCLTECH">HCLTECH</option>
+    <option value="HDFC">HDFC</option>
+    <option value="HDFCBANK">HDFCBANK</option>
+    <option value="HDIL">HDIL</option>
+    <option value="HEROHONDA">HEROHONDA</option>
+    <option value="HEROMOTOCO">HEROMOTOCO</option>
+    <option value="HEXAWARE">HEXAWARE</option>
+    <option value="HINDALC0">HINDALC0</option>
+    <option value="HINDALCO">HINDALCO</option>
+    <option value="HINDLEVER">HINDLEVER</option>
+    <option value="HINDOILEXP">HINDOILEXP</option>
+    <option value="HINDPETRO">HINDPETRO</option>
+    <option value="HINDUJATMT">HINDUJATMT</option>
+    <option value="HINDUJAVEN">HINDUJAVEN</option>
+    <option value="HINDUNILVR">HINDUNILVR</option>
+    <option value="HINDZINC">HINDZINC</option>
+    <option value="HOTELEELA">HOTELEELA</option>
+    <option value="HTMT">HTMT</option>
+    <option value="HTMTGLOBAL">HTMTGLOBAL</option>
+    <option value="I-FLEX">I-FLEX</option>
+    <option value="IBN18">IBN18</option>
+    <option value="IBREALEST">IBREALEST</option>
+    <option value="IBULHSGFIN">IBULHSGFIN</option>
+    <option value="ICICI">ICICI</option>
+    <option value="ICICIBANK">ICICIBANK</option>
+    <option value="ICIL">ICIL</option>
+    <option value="ICSA">ICSA</option>
+    <option value="IDBI">IDBI</option>
+    <option value="IDEA">IDEA</option>
+    <option value="IDFC">IDFC</option>
+    <option value="IDFCBANK">IDFCBANK</option>
+    <option value="IFCI">IFCI</option>
+    <option value="IGL">IGL</option>
+    <option value="INDHOTEL">INDHOTEL</option>
+    <option value="INDIACEM">INDIACEM</option>
+    <option value="INDIAINFO">INDIAINFO</option>
+    <option value="INDIANB">INDIANB</option>
+    <option value="INDRAYON">INDRAYON</option>
+    <option value="INDUSINDBK">INDUSINDBK</option>
+    <option value="INFOSYSTCH">INFOSYSTCH</option>
+    <option value="INFRATEL">INFRATEL</option>
+    <option value="INFY">INFY</option>
+    <option value="IOB">IOB</option>
+    <option value="IOC">IOC</option>
+    <option value="IPCL">IPCL</option>
+    <option value="IRB">IRB</option>
+    <option value="ISPATIND">ISPATIND</option>
+    <option value="ITC">ITC</option>
+    <option value="IVRCLINFRA">IVRCLINFRA</option>
+    <option value="IVRPRIME">IVRPRIME</option>
+    <option value="J&amp;KBANK">J&amp;KBANK</option>
+    <option value="JETAIRWAYS">JETAIRWAYS</option>
+    <option value="JINDALSAW">JINDALSAW</option>
+    <option value="JINDALSTEL">JINDALSTEL</option>
+    <option value="JINDALSWHL">JINDALSWHL</option>
+    <option value="JISLJALEQS">JISLJALEQS</option>
+    <option value="JPASSOCIAT">JPASSOCIAT</option>
+    <option value="JPHYDRO">JPHYDRO</option>
+    <option value="JPPOWER">JPPOWER</option>
+    <option value="JSL">JSL</option>
+    <option value="JSTAINLESS">JSTAINLESS</option>
+    <option value="JSWENERGY">JSWENERGY</option>
+    <option value="JSWISPAT">JSWISPAT</option>
+    <option value="JSWSTEEL">JSWSTEEL</option>
+    <option value="JUBLFOOD">JUBLFOOD</option>
+    <option value="JUSTDIAL">JUSTDIAL</option>
+    <option value="KESORAMIND">KESORAMIND</option>
+    <option value="KFA">KFA</option>
+    <option value="KIRLOSKCUM">KIRLOSKCUM</option>
+    <option value="KLGSYSTEL">KLGSYSTEL</option>
+    <option value="KOTAKBANK">KOTAKBANK</option>
+    <option value="KPIT">KPIT</option>
+    <option value="KSCL">KSCL</option>
+    <option value="KSK">KSK</option>
+    <option value="KSOILS">KSOILS</option>
+    <option value="KTKBANK">KTKBANK</option>
+    <option value="L&amp;T">L&amp;T</option>
+    <option value="L&amp;TFH">L&amp;TFH</option>
+    <option value="LAXMIMACH">LAXMIMACH</option>
+    <option value="LICHSGFIN">LICHSGFIN</option>
+    <option value="LITL">LITL</option>
+    <option value="LT">LT</option>
+    <option value="LUPIN">LUPIN</option>
+    <option value="M&amp;M">M&amp;M</option>
+    <option value="M&amp;MFIN">M&amp;MFIN</option>
+    <option value="MAHLIFE">MAHLIFE</option>
+    <option value="MAHSEAMLES">MAHSEAMLES</option>
+    <option value="MARICO">MARICO</option>
+    <option value="MARUTI">MARUTI</option>
+    <option value="MASTEK">MASTEK</option>
+    <option value="MATRIXLABS">MATRIXLABS</option>
+    <option value="MAX">MAX</option>
+    <option value="MCDOWELL-N">MCDOWELL-N</option>
+    <option value="MCLEODRUSS">MCLEODRUSS</option>
+    <option value="MERCATOR">MERCATOR</option>
+    <option value="MIC">MIC</option>
+    <option value="MICO">MICO</option>
+    <option value="MINDTREE">MINDTREE</option>
+    <option value="MLL">MLL</option>
+    <option value="MONNETISPA">MONNETISPA</option>
+    <option value="MOSERBAER">MOSERBAER</option>
+    <option value="MOTHERSUMI">MOTHERSUMI</option>
+    <option value="MPHASIS">MPHASIS</option>
+    <option value="MPHASISBFL">MPHASISBFL</option>
+    <option value="MRF">MRF</option>
+    <option value="MRPL">MRPL</option>
+    <option value="MTNL">MTNL</option>
+    <option value="MUNDRAPORT">MUNDRAPORT</option>
+    <option value="NAGARCONST">NAGARCONST</option>
+    <option value="NAGARFERT">NAGARFERT</option>
+    <option value="NAGAROIL">NAGAROIL</option>
+    <option value="NATIONALUM">NATIONALUM</option>
+    <option value="NAUKRI">NAUKRI</option>
+    <option value="NBVENTURES">NBVENTURES</option>
+    <option value="NCC">NCC</option>
+    <option value="NDTV">NDTV</option>
+    <option value="NETWORK18">NETWORK18</option>
+    <option value="NEYVELILIG">NEYVELILIG</option>
+    <option value="NHPC">NHPC</option>
+    <option value="NICOLASPIR">NICOLASPIR</option>
+    <option value="NIIT">NIIT</option>
+    <option value="NIITLTD">NIITLTD</option>
+    <option value="NIITTECH">NIITTECH</option>
+    <option value="NIPPONDENR">NIPPONDENR</option>
+    <option value="NMDC">NMDC</option>
+    <option value="NOIDATOLL">NOIDATOLL</option>
+    <option value="NTPC">NTPC</option>
+    <option value="NUCLEUS">NUCLEUS</option>
+    <option value="OFSS">OFSS</option>
+    <option value="OIL">OIL</option>
+    <option value="OMAXE">OMAXE</option>
+    <option value="ONGC">ONGC</option>
+    <option value="ONMOBILE">ONMOBILE</option>
+    <option value="OPTOCIRCUI">OPTOCIRCUI</option>
+    <option value="ORBITCORP">ORBITCORP</option>
+    <option value="ORCHIDCHEM">ORCHIDCHEM</option>
+    <option value="ORIENTBANK">ORIENTBANK</option>
+    <option value="PAGEIND">PAGEIND</option>
+    <option value="PANTALOONR">PANTALOONR</option>
+    <option value="PARSVNATH">PARSVNATH</option>
+    <option value="PATELENG">PATELENG</option>
+    <option value="PATNI">PATNI</option>
+    <option value="PCJEWELLER">PCJEWELLER</option>
+    <option value="PENINLAND">PENINLAND</option>
+    <option value="PETRONET">PETRONET</option>
+    <option value="PFC">PFC</option>
+    <option value="PFIZER">PFIZER</option>
+    <option value="PIDILITIND">PIDILITIND</option>
+    <option value="PIRHEALTH">PIRHEALTH</option>
+    <option value="PNB">PNB</option>
+    <option value="POLARIS">POLARIS</option>
+    <option value="POWERGRID">POWERGRID</option>
+    <option value="PRAJIND">PRAJIND</option>
+    <option value="PRISMCEM">PRISMCEM</option>
+    <option value="PTC">PTC</option>
+    <option value="PUNJLLOYD">PUNJLLOYD</option>
+    <option value="PURVA">PURVA</option>
+    <option value="RAJESHEXPO">RAJESHEXPO</option>
+    <option value="RANBAXY">RANBAXY</option>
+    <option value="RAYMOND">RAYMOND</option>
+    <option value="RCOM">RCOM</option>
+    <option value="RECLTD">RECLTD</option>
+    <option value="REDINGTON">REDINGTON</option>
+    <option value="REL">REL</option>
+    <option value="RELCAPITAL">RELCAPITAL</option>
+    <option value="RELIANCE">RELIANCE</option>
+    <option value="RELINFRA">RELINFRA</option>
+    <option value="RELMEDIA">RELMEDIA</option>
+    <option value="RELPETRO">RELPETRO</option>
+    <option value="RENUKA">RENUKA</option>
+    <option value="RIIL">RIIL</option>
+    <option value="RNRL">RNRL</option>
+    <option value="ROLTA">ROLTA</option>
+    <option value="RPL">RPL</option>
+    <option value="RPOWER">RPOWER</option>
+    <option value="RUCHISOYA">RUCHISOYA</option>
+    <option value="SAIL">SAIL</option>
+    <option value="SAMRUDDHI">SAMRUDDHI</option>
+    <option value="SASKEN">SASKEN</option>
+    <option value="SATYAMCOMP">SATYAMCOMP</option>
+    <option value="SBIN">SBIN</option>
+    <option value="SCI">SCI</option>
+    <option value="SESAGOA">SESAGOA</option>
+    <option value="SHREECEM">SHREECEM</option>
+    <option value="SIEMENS">SIEMENS</option>
+    <option value="SINTEX">SINTEX</option>
+    <option value="SKSMICRO">SKSMICRO</option>
+    <option value="SKUMARSYNF">SKUMARSYNF</option>
+    <option value="SOBHA">SOBHA</option>
+    <option value="SOUTHBANK">SOUTHBANK</option>
+    <option value="SREINFRA">SREINFRA</option>
+    <option value="SREINTFIN">SREINTFIN</option>
+    <option value="SRF">SRF</option>
+    <option value="SRTRANSFIN">SRTRANSFIN</option>
+    <option value="SSLT">SSLT</option>
+    <option value="STAR">STAR</option>
+    <option value="STER">STER</option>
+    <option value="STERLINBIO">STERLINBIO</option>
+    <option value="STROPTICAL">STROPTICAL</option>
+    <option value="STRTECH">STRTECH</option>
+    <option value="SUNPHARMA">SUNPHARMA</option>
+    <option value="SUNTV">SUNTV</option>
+    <option value="SUZLON">SUZLON</option>
+    <option value="SYNDIBANK">SYNDIBANK</option>
+    <option value="TATACHEM">TATACHEM</option>
+    <option value="TATACOFFEE">TATACOFFEE</option>
+    <option value="TATACOMM">TATACOMM</option>
+    <option value="TATAELXSI">TATAELXSI</option>
+    <option value="TATAGLOBAL">TATAGLOBAL</option>
+    <option value="TATAMOTORS">TATAMOTORS</option>
+    <option value="TATAMTRDVR">TATAMTRDVR</option>
+    <option value="TATAPOWER">TATAPOWER</option>
+    <option value="TATASTEEL">TATASTEEL</option>
+    <option value="TATATEA">TATATEA</option>
+    <option value="TCS">TCS</option>
+    <option value="TECHM">TECHM</option>
+    <option value="TELCO">TELCO</option>
+    <option value="THERMAX">THERMAX</option>
+    <option value="TISCO">TISCO</option>
+    <option value="TITAN">TITAN</option>
+    <option value="TORNTPHARM">TORNTPHARM</option>
+    <option value="TORNTPOWER">TORNTPOWER</option>
+    <option value="TRIVENI">TRIVENI</option>
+    <option value="TTKPRESTIG">TTKPRESTIG</option>
+    <option value="TTML">TTML</option>
+    <option value="TULIP">TULIP</option>
+    <option value="TV-18">TV-18</option>
+    <option value="TV18BRDCST">TV18BRDCST</option>
+    <option value="TVSMOTOR">TVSMOTOR</option>
+    <option value="UBL">UBL</option>
+    <option value="UCOBANK">UCOBANK</option>
+    <option value="ULTRACEMCO">ULTRACEMCO</option>
+    <option value="UNIONBANK">UNIONBANK</option>
+    <option value="UNIPHOS">UNIPHOS</option>
+    <option value="UNITECH">UNITECH</option>
+    <option value="UPL">UPL</option>
+    <option value="UTIBANK">UTIBANK</option>
+    <option value="UTVSOF">UTVSOF</option>
+    <option value="VDOCONINTL">VDOCONINTL</option>
+    <option value="VEDL">VEDL</option>
+    <option value="VIDEOIND">VIDEOIND</option>
+    <option value="VIJAYABANK">VIJAYABANK</option>
+    <option value="VIPIND">VIPIND</option>
+    <option value="VOLTAMP">VOLTAMP</option>
+    <option value="VOLTAS">VOLTAS</option>
+    <option value="VSNL">VSNL</option>
+    <option value="WALCHANNAG">WALCHANNAG</option>
+    <option value="WELCORP">WELCORP</option>
+    <option value="WELGUJ">WELGUJ</option>
+    <option value="WIPRO">WIPRO</option>
+    <option value="WOCKPHARMA">WOCKPHARMA</option>
+    <option value="WWIL">WWIL</option>
+    <option value="YESBANK">YESBANK</option>
+    <option value="ZEEL">ZEEL</option>
+    <option value="ZEETELE">ZEETELE</option>
+</select>
+<br>
+
+<!-- stock options begin -->
+
+<!-- selection of year begin -->
+
+<select size="1" id="year">
+    <option value="select"> Select Year </option>
+    <option value="2021">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    <option value="2013">2013</option>
+    <option value="2012">2012</option>
+    <option value="2011">2011</option>
+    <option value="2010">2010</option>
+    <option value="2009">2009</option>
+    <option value="2008">2008</option>
+    <option value="2007">2007</option>
+    <option value="2006">2006</option>
+    <option value="2005">2005</option>
+    <option value="2004">2004</option>
+    <option value="2003">2003</option>
+    <option value="2002">2002</option>
+    <option value="2001">2001</option>
+    <option value="2000">2000</option>
+</select>
+<br>
+
+<!-- selection of year ends -->
+
+<!-- selection of expiry begins -->
+
+<select id="expiryDate">
+    <option value="select" selected=""> Select Expiry </option>
+
+    <option value="27-01-2011">27-01-2011</option>
+    <option value="24-02-2011">24-02-2011</option>
+    <option value="31-03-2011">31-03-2011</option>
+    <option value="28-04-2011">28-04-2011</option>
+    <option value="26-05-2011">26-05-2011</option>
+    <option value="30-06-2011">30-06-2011</option>
+    <option value="28-07-2011">28-07-2011</option>
+    <option value="25-08-2011">25-08-2011</option>
+    <option value="16-09-2011">16-09-2011</option>
+    <option value="29-09-2011">29-09-2011</option>
+    <option value="21-10-2011">21-10-2011</option>
+    <option value="25-10-2011">25-10-2011</option>
+    <option value="18-11-2011">18-11-2011</option>
+    <option value="24-11-2011">24-11-2011</option>
+    <option value="16-12-2011">16-12-2011</option>
+    <option value="29-12-2011">29-12-2011</option>
+
+    <option value="20-01-2012">20-01-2012</option>
+    <option value="25-01-2012">25-01-2012</option>
+    <option value="17-02-2012">17-02-2012</option>
+    <option value="23-02-2012">23-02-2012</option>
+    <option value="16-03-2012">16-03-2012</option>
+    <option value="29-03-2012">29-03-2012</option>
+    <option value="20-04-2012">20-04-2012</option>
+    <option value="26-04-2012">26-04-2012</option>
+    <option value="18-05-2012">18-05-2012</option>
+    <option value="31-05-2012">31-05-2012</option>
+    <option value="15-06-2012">15-06-2012</option>
+    <option value="28-06-2012">28-06-2012</option>
+    <option value="20-07-2012">20-07-2012</option>
+    <option value="26-07-2012">26-07-2012</option>
+    <option value="17-08-2012">17-08-2012</option>
+    <option value="30-08-2012">30-08-2012</option>
+    <option value="21-09-2012">21-09-2012</option>
+    <option value="27-09-2012">27-09-2012</option>
+    <option value="19-10-2012">19-10-2012</option>
+    <option value="25-10-2012">25-10-2012</option>
+    <option value="16-11-2012">16-11-2012</option>
+    <option value="29-11-2012">29-11-2012</option>
+    <option value="21-12-2012">21-12-2012</option>
+    <option value="27-12-2012">27-12-2012</option>
+
+    <option value="18-01-2013">18-01-2013</option>
+    <option value="31-01-2013">31-01-2013</option>
+    <option value="15-02-2013">15-02-2013</option>
+    <option value="28-02-2013">28-02-2013</option>
+    <option value="15-03-2013">15-03-2013</option>
+    <option value="28-03-2013">28-03-2013</option>
+    <option value="18-04-2013">18-04-2013</option>
+    <option value="25-04-2013">25-04-2013</option>
+    <option value="17-05-2013">17-05-2013</option>
+    <option value="30-05-2013">30-05-2013</option>
+    <option value="21-06-2013">21-06-2013</option>
+    <option value="27-06-2013">27-06-2013</option>
+    <option value="19-07-2013">19-07-2013</option>
+    <option value="25-07-2013">25-07-2013</option>
+    <option value="16-08-2013">16-08-2013</option>
+    <option value="29-08-2013">29-08-2013</option>
+    <option value="20-09-2013">20-09-2013</option>
+    <option value="26-09-2013">26-09-2013</option>
+    <option value="18-10-2013">18-10-2013</option>
+    <option value="31-10-2013">31-10-2013</option>
+    <option value="15-11-2013">15-11-2013</option>
+    <option value="28-11-2013">28-11-2013</option>
+    <option value="20-12-2013">20-12-2013</option>
+    <option value="26-12-2013">26-12-2013</option>
+
+    <option value="17-01-2014">17-01-2014</option>
+    <option value="30-01-2014">30-01-2014</option>
+    <option value="21-02-2014">21-02-2014</option>
+    <option value="26-02-2014">26-02-2014</option>
+    <option value="27-02-2014">27-02-2014</option>
+    <option value="21-03-2014">21-03-2014</option>
+    <option value="27-03-2014">27-03-2014</option>
+    <option value="17-04-2014">17-04-2014</option>
+    <option value="24-04-2014">24-04-2014</option>
+    <option value="16-05-2014">16-05-2014</option>
+    <option value="29-05-2014">29-05-2014</option>
+    <option value="20-06-2014">20-06-2014</option>
+    <option value="26-06-2014">26-06-2014</option>
+    <option value="18-07-2014">18-07-2014</option>
+    <option value="31-07-2014">31-07-2014</option>
+    <option value="14-08-2014">14-08-2014</option>
+    <option value="28-08-2014">28-08-2014</option>
+    <option value="19-09-2014">19-09-2014</option>
+    <option value="25-09-2014">25-09-2014</option>
+    <option value="17-10-2014">17-10-2014</option>
+    <option value="30-10-2014">30-10-2014</option>
+    <option value="21-11-2014">21-11-2014</option>
+    <option value="27-11-2014">27-11-2014</option>
+    <option value="19-12-2014">19-12-2014</option>
+    <option value="24-12-2014">24-12-2014</option>
+
+    <option value="16-01-2015">16-01-2015</option>
+    <option value="29-01-2015">29-01-2015</option>
+    <option value="20-02-2015">20-02-2015</option>
+    <option value="26-02-2015">26-02-2015</option>
+    <option value="20-03-2015">20-03-2015</option>
+    <option value="26-03-2015">26-03-2015</option>
+    <option value="17-04-2015">17-04-2015</option>
+    <option value="30-04-2015">30-04-2015</option>
+    <option value="15-05-2015">15-05-2015</option>
+    <option value="28-05-2015">28-05-2015</option>
+    <option value="19-06-2015">19-06-2015</option>
+    <option value="25-06-2015">25-06-2015</option>
+    <option value="17-07-2015">17-07-2015</option>
+    <option value="30-07-2015">30-07-2015</option>
+    <option value="21-08-2015">21-08-2015</option>
+    <option value="27-08-2015">27-08-2015</option>
+    <option value="18-09-2015">18-09-2015</option>
+    <option value="24-09-2015">24-09-2015</option>
+    <option value="16-10-2015">16-10-2015</option>
+    <option value="29-10-2015">29-10-2015</option>
+    <option value="20-11-2015">20-11-2015</option>
+    <option value="26-11-2015">26-11-2015</option>
+    <option value="18-12-2015">18-12-2015</option>
+    <option value="31-12-2015">31-12-2015</option>
+
+    <option value="15-01-2016">15-01-2016</option>
+    <option value="28-01-2016">28-01-2016</option>
+    <option value="19-02-2016">19-02-2016</option>
+    <option value="25-02-2016">25-02-2016</option>
+    <option value="18-03-2016">18-03-2016</option>
+    <option value="31-03-2016">31-03-2016</option>
+    <option value="13-04-2016">13-04-2016</option>
+    <option value="28-04-2016">28-04-2016</option>
+    <option value="20-05-2016">20-05-2016</option>
+    <option value="26-05-2016">26-05-2016</option>
+    <option value="02-06-2016">02-06-2016</option>
+    <option value="09-06-2016">09-06-2016</option>
+    <option value="16-06-2016">16-06-2016</option>
+    <option value="17-06-2016">17-06-2016</option>
+    <option value="23-06-2016">23-06-2016</option>
+    <option value="30-06-2016">30-06-2016</option>
+    <option value="07-07-2016">07-07-2016</option>
+    <option value="14-07-2016">14-07-2016</option>
+    <option value="15-07-2016">15-07-2016</option>
+    <option value="21-07-2016">21-07-2016</option>
+    <option value="28-07-2016">28-07-2016</option>
+    <option value="04-08-2016">04-08-2016</option>
+    <option value="11-08-2016">11-08-2016</option>
+    <option value="18-08-2016">18-08-2016</option>
+    <option value="19-08-2016">19-08-2016</option>
+    <option value="25-08-2016">25-08-2016</option>
+    <option value="01-09-2016">01-09-2016</option>
+    <option value="08-09-2016">08-09-2016</option>
+    <option value="15-09-2016">15-09-2016</option>
+    <option value="16-09-2016">16-09-2016</option>
+    <option value="22-09-2016">22-09-2016</option>
+    <option value="29-09-2016">29-09-2016</option>
+    <option value="06-10-2016">06-10-2016</option>
+    <option value="13-10-2016">13-10-2016</option>
+    <option value="20-10-2016">20-10-2016</option>
+    <option value="21-10-2016">21-10-2016</option>
+    <option value="27-10-2016">27-10-2016</option>
+    <option value="03-11-2016">03-11-2016</option>
+    <option value="10-11-2016">10-11-2016</option>
+    <option value="17-11-2016">17-11-2016</option>
+    <option value="18-11-2016">18-11-2016</option>
+    <option value="24-11-2016">24-11-2016</option>
+    <option value="01-12-2016">01-12-2016</option>
+    <option value="08-12-2016">08-12-2016</option>
+    <option value="15-12-2016">15-12-2016</option>
+    <option value="16-12-2016">16-12-2016</option>
+    <option value="22-12-2016">22-12-2016</option>
+    <option value="29-12-2016">29-12-2016</option>
+</select>
+<br>
+
+<br>
+
+<!-- selection of expiry ends -->
+<span>From:</span>
+<input type="date" id="fromDate">
+<span>To:</span>
+<input type="date" id="toDate">
+</br>
+
+<span>Range From:</span>
+<input type="text" id="fromStrike">
+<span>To:</span>
+<input type="text" id="toStrike">
+</br>
+
+<div class="col-sm-12 buttons">
+    <div class="checkbox">
+        <label><input type="checkbox" value="" id="at_hun">At hundreds.</label>
+    </div>
+</div>
+
+<div class="col-sm-12 buttons">
+    <button class="btn btn-lg get-btn" type="button">GET RESULTS</button>
+</div>
+ 
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js">
+    </script>
+    <script>
+    $("#instrumentType").on('change',function(){
+        instrumentType = null;
+        symbol = null;
+        year = null;
+        expiryDate = null;
+        fromDate = null;
+        toDate = null;
+        fu = null;
+        playWith = $("select#instrumentType option:selected").val();
+        if(playWith != "select"){
+            instrumentType = playWith;
+        }
+
+        $("#FUTIDX").on('change',function(){
+          symbol = $("select#FUTIDX option:selected").val();
+        });
+        $("#FUTSTK").on('change',function(){
+          symbol = $("select#FUTSTK option:selected").val();
+        });
+        $("#OPTIDX").on('change',function(){
+          symbol = $("select#OPTIDX option:selected").val();
+        });
+        $("#OPTSTK").on('change',function(){
+          symbol = $("select#OPTSTK option:selected").val();
+        });        
+
+
+        $("#year").on('change',function(){
+          year = $("select#year option:selected").val();
+        });
+
+        $("#expiryDate").on('change',function(){
+          expiryDate = $("select#expiryDate option:selected").val();
+        });
+
+        $(".hideThem").css({"display":"none"});
+        $("#"+playWith).css({"display":"inline"});
+    });
+    
+        $('.get-btn').on('click', function() {
+
+                $('.get-btn').attr('disabled', 'disabled');
+
+                if(instrumentType == "select"){
+                    alert("Please select proper options.");
+                    return false;
+                }
+
+                if((instrumentType == "FUTIDX") || (instrumentType == "FUTSTK")){
+                    fu = 1;
+                }else{
+                    fu = 0;
+                }
+                
+                fromStrike = document.getElementById("fromStrike").value;
+                if (isNaN(parseFloat(fromStrike))) {
+                    alert("Please enter a valid interval.");
+                    return false;
+                }
+
+                toStrike = document.getElementById("toStrike").value;
+                if (isNaN(parseFloat(toStrike))) {
+                    alert("Please enter a valid interval.");
+                    return false;
+                }
+
+                if ($("#at_hun").is(":checked")) {
+                    var gap = 1;
+                } else {
+                    var gap = 0;
+                }
+
+
+
+                fromDate = $("#fromDate").val();
+                toDate = $("#toDate").val();
+
+                if((instrumentType == null) || (symbol == null) || (year == null) || (expiryDate == null) || (fromDate == null || fromDate =="") || (toDate ==null || toDate == "")){
+                    alert("Something is empty fix it");
+                    return false;
+                    console.log("Instrument type is "+instrumentType+ " symbol is "+symbol+ " year is "+year+" expiry is "+expiryDate+" from date is "+fromDate+" to date is "+toDate);
+                }else{
+                          var fromYear = fromDate.substring(0,4).trim();
+                          var fromMonth = fromDate.substring(5,7).trim();
+                          var fromDay = fromDate.substring(8,fromDate.length).trim();
+                          var toYear = toDate.substring(0,4).trim();
+                          var toMonth = toDate.substring(5,7).trim();
+                          var toDay = toDate.substring(8,toDate.length).trim();
+
+
+                            switch (fromMonth) {
+                                case "01":
+                                    fromMonth = "Jan";
+                                    break;
+                                case "02":
+                                    fromMonth = "Feb";
+                                    break;
+                                case "03":
+                                    fromMonth = "Mar";
+                                    break;
+                                case "04":
+                                    fromMonth = "Apr";
+                                    break;
+                                case "05":
+                                    fromMonth = "May";
+                                    break;
+                                case "06":
+                                    fromMonth = "Jun";
+                                    break;
+                                case "07":
+                                    fromMonth = "Jul";
+                                    break;
+                                case "08":
+                                    fromMonth = "Aug";
+                                    break;
+                                case "09":
+                                    fromMonth = "Sep";
+                                    break;
+                                case "10":
+                                    fromMonth = "Oct";
+                                    break;
+                                case "11":
+                                    fromMonth = "Nov";
+                                    break;
+                                case "12":
+                                    fromMonth = "Dec";
+                                    break;
+                            }
+
+                            switch (toMonth) {
+                                case "01":
+                                    toMonth = "Jan";
+                                    break;
+                                case "02":
+                                    toMonth = "Feb";
+                                    break;
+                                case "03":
+                                    toMonth = "Mar";
+                                    break;
+                                case "04":
+                                    toMonth = "Apr";
+                                    break;
+                                case "05":
+                                    toMonth = "May";
+                                    break;
+                                case "06":
+                                    toMonth = "Jun";
+                                    break;
+                                case "07":
+                                    toMonth = "Jul";
+                                    break;
+                                case "08":
+                                    toMonth = "Aug";
+                                    break;
+                                case "09":
+                                    toMonth = "Sep";
+                                    break;
+                                case "10":
+                                    toMonth = "Oct";
+                                    break;
+                                case "11":
+                                    toMonth = "Nov";
+                                    break;
+                                case "12":
+                                    toMonth = "Dec";
+                                    break;
+                            }
+
+                            toDate = toDay+"-"+toMonth+"-"+toYear;
+                            fromDate = fromDay+"-"+fromMonth+"-"+fromYear;
+
+                            console.log("to date is "+toDate+" from date is "+fromDate);
+
+                        $.ajax({
+                            url: '/nseupload/'+instrumentType +'/'+ symbol + '/' + year + '/' + expiryDate + '/' + fromDate + '/' + toDate + '/' + fromStrike + '/' + toStrike + '/' + gap + '/' + fu,
+                            type: 'POST',
+                            processData: true,
+                            contentType: false,
+                        });
+                }
+            });
+    </script>
+</body>
+
+</html>

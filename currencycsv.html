@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .row {
+            margin-top: 80px;
+        }
+        
+        .select-btn {
+            color: #ffffff;
+            background-color: #F89406;
+            border: none;
+        }
+        
+        .select-btn:hover,
+        .select-btn:focus,
+        .select-btn:active,
+        .select-btn.active {
+            color: #ffffff;
+            background-color: #FA8900;
+            border: none;
+        }
+        
+        .upload-btn {
+            color: #ffffff;
+            background-color: #10B6EE;
+            border: none;
+        }
+        
+        .upload-btn:hover,
+        .upload-btn:focus,
+        .upload-btn:active,
+        .upload-btn.active {
+            color: #ffffff;
+            background-color: #6BC9E8;
+            border: none;
+        }
+        
+        .moneycontrol-btn {
+            color: #ffffff;
+            background-color: #33FF3C;
+            border: none;
+        }
+        
+        .moneycontrol-btn:hover,
+        .moneycontrol-btn:focus,
+        .moneycontrol-btn:active,
+        .moneycontrol-btn.active {
+            color: #ffffff;
+            background-color: #33FF77;
+            border: none;
+        }
+        
+        h4 {
+            padding-bottom: 30px;
+            color: #B8BDC1;
+        }
+        
+        .glyphicon {
+            font-size: 5em;
+            color: #9CA3A9;
+        }
+        
+        h2 {
+            margin-top: 15px;
+            color: #68757E;
+        }
+        
+        .panel {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .main-container {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                width: 450px;
+            }
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        .btn:focus,
+        .upload-btn:focus {
+            outline: 0 !important;
+        }
+        
+        #serverresponse {
+            color: red;
+            font-family: helvetica;
+        }
+        
+        #plusValue {
+            text-align: center;
+        }
+        
+        #inputQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        #initialStrike {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .buttons {
+            margin-top: 10px;
+        }
+
+        span{
+                font-weight: 600;
+        }
+
+        .hideit{
+                display: none;
+        }
+
+        #addQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #firstQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+    </style>
+    <title>Upload a CSV</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+</head>
+<body>
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/csv">LTP Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/tick">TICK Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="https://nameless-waters-33613.herokuapp.com">STOPLOSS Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="/premium">Premium</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">Align CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currency">Align Currency CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/oresults">O Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/ohol">OHOL Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencyohol">OHOL Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencycsv">LTP Currency</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <span class="glyphicon glyphicon-cloud-upload"></span>
+                        <h2>Upload Excel for LTP Logic</h2>
+                        <h4>To Populate</h4>
+                        <p id='serverresponse'></p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar"></div>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="plusValue" placeHolder="Please Enter the Plus Value" type="text">
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="inputQuan" placeHolder="Please Enter the Quantities" type="text">
+                        </div>
+
+
+                        <div style="margin-top:8px;" class="col-sm-4 col-sm-offset-4 hideit">
+                                  <span>Slect a Year</span>
+                                  <select class="form-control meth" id="nseYear">
+                                        <option value ="2015">Apply 2015</option>
+                                        <option value = "2016">Apply 2016</option>
+                                 </select>
+                        </div>
+
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" id="shorter_res">Get Shorter Version to check results.</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" id="currency"> Currency</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" id="underlyings"> At Underlyings</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" value="" id="dontSquare"> Don't Square</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <button class="btn btn-lg select-btn" type="button">Select a File</button>
+                            <button class="btn btn-lg upload-btn" type="button">Upload and Populate</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+
+        var ri = function(i) {
+            return document.getElementById(i);
+        }
+
+        $('.select-btn').on('click', function() {
+            $('#upload-input').click();
+            $('.progress-bar').text('0%');
+            $('.progress-bar').width('0%');
+        });
+
+        $('.upload-btn').on('click', function() {
+
+            $('.upload-btn').attr('disabled', 'disabled');
+
+            var plusValue = document.getElementById("plusValue").value;
+            if (isNaN(parseFloat(plusValue))) {
+                alert("Please enter a valid plus value");
+                return false;
+            }
+            var inputQuan = document.getElementById("inputQuan").value;
+            if (isNaN(parseFloat(inputQuan))) {
+                alert("Please enter a valid Quantity");
+                return false;
+            }
+
+            var initialStrike = null;
+
+
+            if ($("#shorter_res").is(":checked")) {
+                var checked = 1;
+            } else {
+                var checked = 0;
+            }
+
+            if ($("#currency").is(":checked")) {
+                var currency = 1;
+            } else {
+                var currency = 0;
+            }
+
+            if ($("#underlyings").is(":checked")) {
+                var underlyings = 1;
+            } else {
+                var underlyings = 0;
+            }
+
+            if ($("#dontSquare").is(":checked")) {
+                var dontSquare = 1;
+            } else {
+                var dontSquare = 0;
+            }
+
+            var files = $("#upload-input").get(0).files;
+
+            if (files.length > 0) {
+
+                var formData = new FormData();
+
+
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    formData.append('uploads[]', file, file.name);
+                }
+
+                var nseYear = document.getElementById("nseYear").value;
+
+                $.ajax({
+                    url: '/upload',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(firstfilename) {
+                        $.ajax({
+                            url: '/calculated/' + firstfilename + '/' + plusValue + '/' + inputQuan + '/' + initialStrike + '/' +checked + '/' + currency + '/' + underlyings + '/' + dontSquare + '/' + nseYear,
+                            type: 'POST',
+                            processData: false,
+                            contentType: false,
+                            success: function(finalfilename) {
+                                location.href = '/download/' + finalfilename;
+                                $('.upload-btn').removeAttr('disabled');
+                            },
+                            statusCode: {
+                                404: function(response) {
+                                    ri('serverresponse').innerHTML = response.responseText;
+                                },
+                                503: function(response) {
+                                    ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                                }
+                            }
+                        });
+                    },
+                    statusCode: {
+                        404: function(response) {
+                            ri('serverresponse').innerHTML = response.responseText;
+                        },
+                        503: function(response) {
+                            ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                        }
+                    },
+
+                    xhr: function() {
+
+                        var xhr = new XMLHttpRequest();
+
+                        xhr.upload.addEventListener('progress', function(evt) {
+
+                            if (evt.lengthComputable) {
+
+                                var percentComplete = evt.loaded / evt.total;
+                                percentComplete = parseInt(percentComplete * 100);
+
+
+                                $('.progress-bar').text(percentComplete + '%');
+                                $('.progress-bar').width(percentComplete + '%');
+
+
+                                if (percentComplete === 100) {
+                                    $('.progress-bar').html('Done');
+                                }
+
+                            }
+
+                        }, false);
+
+                        return xhr;
+                    }
+                });
+
+            } else {
+                alert("Please select a file");
+            }
+        });
+
+    </script>
+</body>
+
+</html>

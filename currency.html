@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .hideThem {
+            display: none;
+        }
+        
+        span {
+            font-family: helvetica;
+            font-weight: 700;
+        }
+        
+        select {
+            width: 200px;
+        }
+        
+        select option {
+            text-align: center;
+        }
+
+        .get-btn {
+            color: #ffffff;
+            background-color: #10B6EE;
+            border: none;
+        }
+        
+        .get-btn:hover,
+        .get-btn:focus,
+        .get-btn:active, 
+        .get-btn.active {
+            color: #ffffff;
+            background-color: #6BC9E8;
+            border: none;
+        }
+
+    </style>
+    <title>Currency CEPE</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/csv">LTP Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/tick">TICK Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="https://nameless-waters-33613.herokuapp.com">STOPLOSS Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="/premium">Premium</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">Align CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currency">Align Currency CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/oresults">O Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/ohol">OHOL Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencyohol">OHOL Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencycsv">LTP Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/nifty">BATTLE GROUND</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <span>Select Instrument: </span>
+    <br>
+<select id="instrumentType">
+    <option value="select">select</option>
+    <option value="FUTCUR">FUTCUR</option>
+    <option value="OPTCUR">OPTCUR</option>
+</select>
+    <br>
+    <!-- index futures begin -->
+    <span>Select Underlying: </span>
+    <br>
+
+<select id="symbolopt">
+    <option value="select" selected="">select</option>
+    <option value="USDINR">USDINR</option>
+</select>
+    <br>
+
+<select id="symbolfut" style="display:none;">
+    <option value="select" selected="">select</option>
+    <option value="USDINR">USDINR</option>
+    <option value="EURINR">EURINR</option>
+    <option value="GBPINR">GBPINR</option>
+    <option value="JPYINR">JPYINR</option>
+</select>
+    <br>
+
+    <span>Select Year: </span>
+    <br>
+    <select id="contractYear">
+    <option value="select" selected="">select</option>
+    <option value="2008">2008</option>
+    <option value="2009">2009</option>
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+</select>
+    <br>
+
+    <span>Select Contracts: </span>
+    <br>
+
+
+    <select id="OUSDINR2010" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 270110">USDINR 270110</option>
+    <option value="USDINR 240210">USDINR 240210</option>
+    <option value="USDINR 290310">USDINR 290310</option>
+    <option value="USDINR 280410">USDINR 280410</option>
+    <option value="USDINR 270510">USDINR 270510</option>
+    <option value="USDINR 280610">USDINR 280610</option>
+    <option value="USDINR 280710">USDINR 280710</option>
+    <option value="USDINR 270810">USDINR 270810</option>
+    <option value="USDINR 280910">USDINR 280910</option>
+    <option value="USDINR 271010">USDINR 271010</option>
+    <option value="USDINR 261110">USDINR 261110</option>
+    <option value="USDINR 291210">USDINR 291210</option>
+</select>
+
+
+    <select id="OUSDINR2011" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 270111">USDINR 270111</option>
+    <option value="USDINR 240211">USDINR 240211</option>
+    <option value="USDINR 290311">USDINR 290311</option>
+    <option value="USDINR 270411">USDINR 270411</option>
+    <option value="USDINR 270511">USDINR 270511</option>
+    <option value="USDINR 280611">USDINR 280611</option>
+    <option value="USDINR 270711">USDINR 270711</option>
+    <option value="USDINR 260811">USDINR 260811</option>
+    <option value="USDINR 290811">USDINR 290811</option>
+    <option value="USDINR 270911">USDINR 270911</option>
+    <option value="USDINR 280911">USDINR 280911</option>
+    <option value="USDINR 251011">USDINR 251011</option>
+    <option value="USDINR 271011">USDINR 271011</option>
+    <option value="USDINR 281111">USDINR 281111</option>
+    <option value="USDINR 281211">USDINR 281211</option>
+</select>
+
+    <select id="OUSDINR2012" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 270112">USDINR 270112</option>
+    <option value="USDINR 270212">USDINR 270212</option>
+    <option value="USDINR 280312">USDINR 280312</option>
+    <option value="USDINR 260412">USDINR 260412</option>
+    <option value="USDINR 290512">USDINR 290512</option>
+    <option value="USDINR 270612">USDINR 270612</option>
+    <option value="USDINR 270712">USDINR 270712</option>
+    <option value="USDINR 290812">USDINR 290812</option>
+    <option value="USDINR 260912">USDINR 260912</option>
+    <option value="USDINR 291012">USDINR 291012</option>
+    <option value="USDINR 271112">USDINR 271112</option>
+    <option value="USDINR 271212">USDINR 271212</option>
+</select>
+
+    <select id="OUSDINR2013" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 290113">USDINR 290113</option>
+    <option value="USDINR 260213">USDINR 260213</option>
+    <option value="USDINR 270313">USDINR 270313</option>
+    <option value="USDINR 290313">USDINR 290313</option>
+    <option value="USDINR 260413">USDINR 260413</option>
+    <option value="USDINR 290513">USDINR 290513</option>
+    <option value="USDINR 260613">USDINR 260613</option>
+    <option value="USDINR 290713">USDINR 290713</option>
+    <option value="USDINR 280813">USDINR 280813</option>
+    <option value="USDINR 250913">USDINR 250913</option>
+    <option value="USDINR 260913">USDINR 260913</option>
+    <option value="USDINR 291013">USDINR 291013</option>
+    <option value="USDINR 271113">USDINR 271113</option>
+    <option value="USDINR 271213">USDINR 271213</option>
+</select>
+
+    <select id="OUSDINR2014" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 290114">USDINR 290114</option>
+    <option value="USDINR 250214">USDINR 250214</option>
+    <option value="USDINR 260214">USDINR 260214</option>
+    <option value="USDINR 260314">USDINR 260314</option>
+    <option value="USDINR 270314">USDINR 270314</option>
+    <option value="USDINR 280414">USDINR 280414</option>
+    <option value="USDINR 280514">USDINR 280514</option>
+    <option value="USDINR 260614">USDINR 260614</option>
+    <option value="USDINR 280714">USDINR 280714</option>
+    <option value="USDINR 290714">USDINR 290714</option>
+    <option value="USDINR 260814">USDINR 260814</option>
+    <option value="USDINR 270814">USDINR 270814</option>
+    <option value="USDINR 260914">USDINR 260914</option>
+    <option value="USDINR 291014">USDINR 291014</option>
+    <option value="USDINR 261114">USDINR 261114</option>
+    <option value="USDINR 291214">USDINR 291214</option>
+</select>
+
+    <select id="OUSDINR2015" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 280115">USDINR 280115</option>
+    <option value="USDINR 250215">USDINR 250215</option>
+    <option value="USDINR 270315">USDINR 270315</option>
+    <option value="USDINR 280415">USDINR 280415</option>
+    <option value="USDINR 270515">USDINR 270515</option>
+    <option value="USDINR 260615">USDINR 260615</option>
+    <option value="USDINR 290715">USDINR 290715</option>
+    <option value="USDINR 270815">USDINR 270815</option>
+    <option value="USDINR 280915">USDINR 280915</option>
+    <option value="USDINR 281015">USDINR 281015</option>
+    <option value="USDINR 261115">USDINR 261115</option>
+    <option value="USDINR 291215">USDINR 291215</option>
+</select>
+
+    <select id="OUSDINR2016" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 270116">USDINR 270116</option>
+    <option value="USDINR 250216">USDINR 250216</option>
+    <option value="USDINR 290316">USDINR 290316</option>
+    <option value="USDINR 270416">USDINR 270416</option>
+    <option value="USDINR 270516">USDINR 270516</option>
+    <option value="USDINR 280616">USDINR 280616</option>
+    <option value="USDINR 270716">USDINR 270716</option>
+    <option value="USDINR 290816">USDINR 290816</option>
+    <option value="USDINR 280916">USDINR 280916</option>
+    <option value="USDINR 261016">USDINR 261016</option>
+    <option value="USDINR 281116">USDINR 281116</option>
+    <option value="USDINR 281216">USDINR 281216</option>
+</select>
+
+<select id="OUSDINR2017" class="hideThem">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 270117">USDINR 270117</option>
+    <option value="USDINR 230217">USDINR 230217</option>
+    <option value="USDINR 290317">USDINR 290317</option>
+    <option value="USDINR 260417">USDINR 260417</option>
+    <option value="USDINR 290517">USDINR 290517</option>
+    <option value="USDINR 280617">USDINR 280617</option>
+    <option value="USDINR 270717">USDINR 270717</option>
+    <option value="USDINR 290817">USDINR 290817</option>
+    <option value="USDINR 270917">USDINR 270917</option>
+    <option value="USDINR 271017">USDINR 271017</option>
+    <option value="USDINR 281117">USDINR 281117</option>
+    <option value="USDINR 271217">USDINR 271217</option>
+</select>
+
+
+    <br>
+    <select id="USDINR2008" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 250908">USDINR 250908</option>
+    <option value="USDINR 271008">USDINR 271008</option>
+    <option value="USDINR 261108">USDINR 261108</option>
+    <option value="USDINR 291208">USDINR 291208</option>
+</select>
+
+
+    <select id="USDINR2009" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 280109">USDINR 280109</option>
+    <option value="USDINR 250209">USDINR 250209</option>
+    <option value="USDINR 270309">USDINR 270309</option>
+    <option value="USDINR 280409">USDINR 280409</option>
+    <option value="USDINR 270509">USDINR 270509</option>
+    <option value="USDINR 260609">USDINR 260609</option>
+    <option value="USDINR 290709">USDINR 290709</option>
+    <option value="USDINR 270809">USDINR 270809</option>
+    <option value="USDINR 280909">USDINR 280909</option>
+    <option value="USDINR 281009">USDINR 281009</option>
+    <option value="USDINR 261109">USDINR 261109</option>
+    <option value="USDINR 291209">USDINR 291209</option>
+</select>
+
+
+    <select id="USDINR2010" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="USDINR 270110">USDINR 270110</option>
+    <option value="USDINR 240210">USDINR 240210</option>
+    <option value="USDINR 290310">USDINR 290310</option>
+    <option value="USDINR 280410">USDINR 280410</option>
+    <option value="USDINR 270510">USDINR 270510</option>
+    <option value="USDINR 280610">USDINR 280610</option>
+    <option value="USDINR 280710">USDINR 280710</option>
+    <option value="USDINR 270810">USDINR 270810</option>
+    <option value="USDINR 280910">USDINR 280910</option>
+    <option value="USDINR 271010">USDINR 271010</option>
+    <option value="USDINR 261110">USDINR 261110</option>
+    <option value="USDINR 291210">USDINR 291210</option>
+</select>
+
+
+    <select id="USDINR2011" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="USDINR 270111">USDINR 270111</option>
+    <option value="USDINR 240211">USDINR 240211</option>
+    <option value="USDINR 290311">USDINR 290311</option>
+    <option value="USDINR 270411">USDINR 270411</option>
+    <option value="USDINR 270511">USDINR 270511</option>
+    <option value="USDINR 280611">USDINR 280611</option>
+    <option value="USDINR 270711">USDINR 270711</option>
+    <option value="USDINR 260811">USDINR 260811</option>
+    <option value="USDINR 290811">USDINR 290811</option>
+    <option value="USDINR 270911">USDINR 270911</option>
+    <option value="USDINR 280911">USDINR 280911</option>
+    <option value="USDINR 251011">USDINR 251011</option>
+    <option value="USDINR 271011">USDINR 271011</option>
+    <option value="USDINR 281111">USDINR 281111</option>
+    <option value="USDINR 281211">USDINR 281211</option>
+</select>
+
+
+    <select id="USDINR2012" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="USDINR 270112">USDINR 270112</option>
+    <option value="USDINR 270212">USDINR 270212</option>
+    <option value="USDINR 280312">USDINR 280312</option>
+    <option value="USDINR 260412">USDINR 260412</option>
+    <option value="USDINR 290512">USDINR 290512</option>
+    <option value="USDINR 270612">USDINR 270612</option>
+    <option value="USDINR 270712">USDINR 270712</option>
+    <option value="USDINR 290812">USDINR 290812</option>
+    <option value="USDINR 260912">USDINR 260912</option>
+    <option value="USDINR 291012">USDINR 291012</option>
+    <option value="USDINR 271112">USDINR 271112</option>
+    <option value="USDINR 271212">USDINR 271212</option>
+</select>
+
+
+    <select id="USDINR2013" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="USDINR 290113">USDINR 290113</option>
+    <option value="USDINR 260213">USDINR 260213</option>
+    <option value="USDINR 270313">USDINR 270313</option>
+    <option value="USDINR 290313">USDINR 290313</option>
+    <option value="USDINR 260413">USDINR 260413</option>
+    <option value="USDINR 290513">USDINR 290513</option>l
+    <option value="USDINR 260613">USDINR 260613</option>
+    <option value="USDINR 290713">USDINR 290713</option>
+    <option value="USDINR 280813">USDINR 280813</option>
+    <option value="USDINR 250913">USDINR 250913</option>
+    <option value="USDINR 260913">USDINR 260913</option>
+    <option value="USDINR 291013">USDINR 291013</option>
+    <option value="USDINR 271113">USDINR 271113</option>
+    <option value="USDINR 271213">USDINR 271213</option>
+</select>
+
+
+    <select id="USDINR2014" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="USDINR 290114">USDINR 290114</option>
+    <option value="USDINR 250214">USDINR 250214</option>
+    <option value="USDINR 260214">USDINR 260214</option>
+    <option value="USDINR 260314">USDINR 260314</option>
+    <option value="USDINR 270314">USDINR 270314</option>
+    <option value="USDINR 280414">USDINR 280414</option>
+    <option value="USDINR 280514">USDINR 280514</option>
+    <option value="USDINR 260614">USDINR 260614</option>
+    <option value="USDINR 280714">USDINR 280714</option>
+    <option value="USDINR 290714">USDINR 290714</option>
+    <option value="USDINR 260814">USDINR 260814</option>
+    <option value="USDINR 270814">USDINR 270814</option>
+    <option value="USDINR 260914">USDINR 260914</option>
+    <option value="USDINR 291014">USDINR 291014</option>
+    <option value="USDINR 261114">USDINR 261114</option>
+    <option value="USDINR 291214">USDINR 291214</option>
+</select>
+
+
+    <select id="USDINR2015" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="USDINR 280115">USDINR 280115</option>
+    <option value="USDINR 250215">USDINR 250215</option>
+    <option value="USDINR 270315">USDINR 270315</option>
+    <option value="USDINR 280415">USDINR 280415</option>
+    <option value="USDINR 270515">USDINR 270515</option>
+    <option value="USDINR 260615">USDINR 260615</option>
+    <option value="USDINR 290715">USDINR 290715</option>
+    <option value="USDINR 270815">USDINR 270815</option>
+    <option value="USDINR 280915">USDINR 280915</option>
+    <option value="USDINR 281015">USDINR 281015</option>
+    <option value="USDINR 261115">USDINR 261115</option>
+    <option value="USDINR 291215">USDINR 291215</option>
+</select>
+
+
+    <select id="USDINR2016" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="USDINR 270116">USDINR 270116</option>
+    <option value="USDINR 250216">USDINR 250216</option>
+    <option value="USDINR 290316">USDINR 290316</option>
+    <option value="USDINR 270416">USDINR 270416</option>
+    <option value="USDINR 270516">USDINR 270516</option>
+    <option value="USDINR 280616">USDINR 280616</option>
+    <option value="USDINR 270716">USDINR 270716</option>
+    <option value="USDINR 290816">USDINR 290816</option>
+    <option value="USDINR 280916">USDINR 280916</option>
+    <option value="USDINR 261016">USDINR 261016</option>
+    <option value="USDINR 281116">USDINR 281116</option>
+    <option value="USDINR 281216">USDINR 281216</option>
+</select>
+
+
+    <select id="USDINR2017" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="USDINR 270117">USDINR 270117</option>
+    <option value="USDINR 240217">USDINR 240217</option>
+    <option value="USDINR 290317">USDINR 290317</option>
+    <option value="USDINR 260417">USDINR 260417</option>
+</select>
+
+
+    <select id="EURINR2008" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="EURINR 250908">EURINR 250908</option>
+    <option value="EURINR 271008">EURINR 271008</option>
+    <option value="EURINR 261108">EURINR 261108</option>
+    <option value="EURINR 291208">EURINR 291208</option>
+</select>
+
+
+    <select id="EURINR2009" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="EURINR 280109">EURINR 280109</option>
+    <option value="EURINR 250209">EURINR 250209</option>
+    <option value="EURINR 270309">EURINR 270309</option>
+    <option value="EURINR 280409">EURINR 280409</option>
+    <option value="EURINR 270509">EURINR 270509</option>
+    <option value="EURINR 260609">EURINR 260609</option>
+    <option value="EURINR 290709">EURINR 290709</option>
+    <option value="EURINR 270809">EURINR 270809</option>
+    <option value="EURINR 280909">EURINR 280909</option>
+    <option value="EURINR 281009">EURINR 281009</option>
+    <option value="EURINR 261109">EURINR 261109</option>
+    <option value="EURINR 291209">EURINR 291209</option>
+</select>
+
+
+    <select id="EURINR2010" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="EURINR 270110">EURINR 270110</option>
+    <option value="EURINR 240210">EURINR 240210</option>
+    <option value="EURINR 290310">EURINR 290310</option>
+    <option value="EURINR 280410">EURINR 280410</option>
+    <option value="EURINR 270510">EURINR 270510</option>
+    <option value="EURINR 280610">EURINR 280610</option>
+    <option value="EURINR 280710">EURINR 280710</option>
+    <option value="EURINR 270810">EURINR 270810</option>
+    <option value="EURINR 280910">EURINR 280910</option>
+    <option value="EURINR 271010">EURINR 271010</option>
+    <option value="EURINR 261110">EURINR 261110</option>
+    <option value="EURINR 291210">EURINR 291210</option>
+</select>
+
+
+    <select id="EURINR2011" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="EURINR 270111">EURINR 270111</option>
+    <option value="EURINR 240211">EURINR 240211</option>
+    <option value="EURINR 290311">EURINR 290311</option>
+    <option value="EURINR 270411">EURINR 270411</option>
+    <option value="EURINR 270511">EURINR 270511</option>
+    <option value="EURINR 280611">EURINR 280611</option>
+    <option value="EURINR 270711">EURINR 270711</option>
+    <option value="EURINR 260811">EURINR 260811</option>
+    <option value="EURINR 290811">EURINR 290811</option>
+    <option value="EURINR 270911">EURINR 270911</option>
+    <option value="EURINR 280911">EURINR 280911</option>
+    <option value="EURINR 251011">EURINR 251011</option>
+    <option value="EURINR 271011">EURINR 271011</option>
+    <option value="EURINR 281111">EURINR 281111</option>
+    <option value="EURINR 281211">EURINR 281211</option>
+</select>
+
+
+    <select id="EURINR2012" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="EURINR 270112">EURINR 270112</option>
+    <option value="EURINR 270212">EURINR 270212</option>
+    <option value="EURINR 280312">EURINR 280312</option>
+    <option value="EURINR 260412">EURINR 260412</option>
+    <option value="EURINR 290512">EURINR 290512</option>
+    <option value="EURINR 270612">EURINR 270612</option>
+    <option value="EURINR 270712">EURINR 270712</option>
+    <option value="EURINR 290812">EURINR 290812</option>
+    <option value="EURINR 260912">EURINR 260912</option>
+    <option value="EURINR 291012">EURINR 291012</option>
+    <option value="EURINR 271112">EURINR 271112</option>
+    <option value="EURINR 271212">EURINR 271212</option>
+</select>
+
+
+    <select id="EURINR2013" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="EURINR 290113">EURINR 290113</option>
+    <option value="EURINR 260213">EURINR 260213</option>
+    <option value="EURINR 270313">EURINR 270313</option>
+    <option value="EURINR 290313">EURINR 290313</option>
+    <option value="EURINR 260413">EURINR 260413</option>
+    <option value="EURINR 290513">EURINR 290513</option>l
+    <option value="EURINR 260613">EURINR 260613</option>
+    <option value="EURINR 290713">EURINR 290713</option>
+    <option value="EURINR 280813">EURINR 280813</option>
+    <option value="EURINR 250913">EURINR 250913</option>
+    <option value="EURINR 260913">EURINR 260913</option>
+    <option value="EURINR 291013">EURINR 291013</option>
+    <option value="EURINR 271113">EURINR 271113</option>
+    <option value="EURINR 271213">EURINR 271213</option>
+</select>
+
+
+    <select id="EURINR2014" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="EURINR 290114">EURINR 290114</option>
+    <option value="EURINR 250214">EURINR 250214</option>
+    <option value="EURINR 260214">EURINR 260214</option>
+    <option value="EURINR 260314">EURINR 260314</option>
+    <option value="EURINR 270314">EURINR 270314</option>
+    <option value="EURINR 280414">EURINR 280414</option>
+    <option value="EURINR 280514">EURINR 280514</option>
+    <option value="EURINR 260614">EURINR 260614</option>
+    <option value="EURINR 280714">EURINR 280714</option>
+    <option value="EURINR 290714">EURINR 290714</option>
+    <option value="EURINR 260814">EURINR 260814</option>
+    <option value="EURINR 270814">EURINR 270814</option>
+    <option value="EURINR 260914">EURINR 260914</option>
+    <option value="EURINR 291014">EURINR 291014</option>
+    <option value="EURINR 261114">EURINR 261114</option>
+    <option value="EURINR 291214">EURINR 291214</option>
+</select>
+
+
+    <select id="EURINR2015" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="EURINR 280115">EURINR 280115</option>
+    <option value="EURINR 250215">EURINR 250215</option>
+    <option value="EURINR 270315">EURINR 270315</option>
+    <option value="EURINR 280415">EURINR 280415</option>
+    <option value="EURINR 270515">EURINR 270515</option>
+    <option value="EURINR 260615">EURINR 260615</option>
+    <option value="EURINR 290715">EURINR 290715</option>
+    <option value="EURINR 270815">EURINR 270815</option>
+    <option value="EURINR 280915">EURINR 280915</option>
+    <option value="EURINR 281015">EURINR 281015</option>
+    <option value="EURINR 261115">EURINR 261115</option>
+    <option value="EURINR 291215">EURINR 291215</option>
+</select>
+
+
+    <select id="EURINR2016" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="EURINR 270116">EURINR 270116</option>
+    <option value="EURINR 250216">EURINR 250216</option>
+    <option value="EURINR 290316">EURINR 290316</option>
+    <option value="EURINR 270416">EURINR 270416</option>
+    <option value="EURINR 270516">EURINR 270516</option>
+    <option value="EURINR 280616">EURINR 280616</option>
+    <option value="EURINR 270716">EURINR 270716</option>
+    <option value="EURINR 290816">EURINR 290816</option>
+    <option value="EURINR 280916">EURINR 280916</option>
+    <option value="EURINR 261016">EURINR 261016</option>
+    <option value="EURINR 281116">EURINR 281116</option>
+    <option value="EURINR 281216">EURINR 281216</option>
+</select>
+
+
+    <select id="EURINR2017" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="EURINR 270117">EURINR 270117</option>
+    <option value="EURINR 240217">EURINR 240217</option>
+    <option value="EURINR 290317">EURINR 290317</option>
+    <option value="EURINR 260417">EURINR 260417</option>
+</select>
+
+
+    <select id="GBPINR2008" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="GBPINR 250908">GBPINR 250908</option>
+    <option value="GBPINR 271008">GBPINR 271008</option>
+    <option value="GBPINR 261108">GBPINR 261108</option>
+    <option value="GBPINR 291208">GBPINR 291208</option>
+</select>
+
+
+
+    <select id="GBPINR2009" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="GBPINR 280109">GBPINR 280109</option>
+    <option value="GBPINR 250209">GBPINR 250209</option>
+    <option value="GBPINR 270309">GBPINR 270309</option>
+    <option value="GBPINR 280409">GBPINR 280409</option>
+    <option value="GBPINR 270509">GBPINR 270509</option>
+    <option value="GBPINR 260609">GBPINR 260609</option>
+    <option value="GBPINR 290709">GBPINR 290709</option>
+    <option value="GBPINR 270809">GBPINR 270809</option>
+    <option value="GBPINR 280909">GBPINR 280909</option>
+    <option value="GBPINR 281009">GBPINR 281009</option>
+    <option value="GBPINR 261109">GBPINR 261109</option>
+    <option value="GBPINR 291209">GBPINR 291209</option>
+</select>
+
+
+    <select id="GBPINR2010" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="GBPINR 270110">GBPINR 270110</option>
+    <option value="GBPINR 240210">GBPINR 240210</option>
+    <option value="GBPINR 290310">GBPINR 290310</option>
+    <option value="GBPINR 280410">GBPINR 280410</option>
+    <option value="GBPINR 270510">GBPINR 270510</option>
+    <option value="GBPINR 280610">GBPINR 280610</option>
+    <option value="GBPINR 280710">GBPINR 280710</option>
+    <option value="GBPINR 270810">GBPINR 270810</option>
+    <option value="GBPINR 280910">GBPINR 280910</option>
+    <option value="GBPINR 271010">GBPINR 271010</option>
+    <option value="GBPINR 261110">GBPINR 261110</option>
+    <option value="GBPINR 291210">GBPINR 291210</option>
+</select>
+
+
+    <select id="GBPINR2011" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="GBPINR 270111">GBPINR 270111</option>
+    <option value="GBPINR 240211">GBPINR 240211</option>
+    <option value="GBPINR 290311">GBPINR 290311</option>
+    <option value="GBPINR 270411">GBPINR 270411</option>
+    <option value="GBPINR 270511">GBPINR 270511</option>
+    <option value="GBPINR 280611">GBPINR 280611</option>
+    <option value="GBPINR 270711">GBPINR 270711</option>
+    <option value="GBPINR 260811">GBPINR 260811</option>
+    <option value="GBPINR 290811">GBPINR 290811</option>
+    <option value="GBPINR 270911">GBPINR 270911</option>
+    <option value="GBPINR 280911">GBPINR 280911</option>
+    <option value="GBPINR 251011">GBPINR 251011</option>
+    <option value="GBPINR 271011">GBPINR 271011</option>
+    <option value="GBPINR 281111">GBPINR 281111</option>
+    <option value="GBPINR 281211">GBPINR 281211</option>
+</select>
+
+
+    <select id="GBPINR2012" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="GBPINR 270112">GBPINR 270112</option>
+    <option value="GBPINR 270212">GBPINR 270212</option>
+    <option value="GBPINR 280312">GBPINR 280312</option>
+    <option value="GBPINR 260412">GBPINR 260412</option>
+    <option value="GBPINR 290512">GBPINR 290512</option>
+    <option value="GBPINR 270612">GBPINR 270612</option>
+    <option value="GBPINR 270712">GBPINR 270712</option>
+    <option value="GBPINR 290812">GBPINR 290812</option>
+    <option value="GBPINR 260912">GBPINR 260912</option>
+    <option value="GBPINR 291012">GBPINR 291012</option>
+    <option value="GBPINR 271112">GBPINR 271112</option>
+    <option value="GBPINR 271212">GBPINR 271212</option>
+</select>
+
+
+    <select id="GBPINR2013" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="GBPINR 290113">GBPINR 290113</option>
+    <option value="GBPINR 260213">GBPINR 260213</option>
+    <option value="GBPINR 270313">GBPINR 270313</option>
+    <option value="GBPINR 290313">GBPINR 290313</option>
+    <option value="GBPINR 260413">GBPINR 260413</option>
+    <option value="GBPINR 290513">GBPINR 290513</option>l
+    <option value="GBPINR 260613">GBPINR 260613</option>
+    <option value="GBPINR 290713">GBPINR 290713</option>
+    <option value="GBPINR 280813">GBPINR 280813</option>
+    <option value="GBPINR 250913">GBPINR 250913</option>
+    <option value="GBPINR 260913">GBPINR 260913</option>
+    <option value="GBPINR 291013">GBPINR 291013</option>
+    <option value="GBPINR 271113">GBPINR 271113</option>
+    <option value="GBPINR 271213">GBPINR 271213</option>
+</select>
+
+
+    <select id="GBPINR2014" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="GBPINR 290114">GBPINR 290114</option>
+    <option value="GBPINR 250214">GBPINR 250214</option>
+    <option value="GBPINR 260214">GBPINR 260214</option>
+    <option value="GBPINR 260314">GBPINR 260314</option>
+    <option value="GBPINR 270314">GBPINR 270314</option>
+    <option value="GBPINR 280414">GBPINR 280414</option>
+    <option value="GBPINR 280514">GBPINR 280514</option>
+    <option value="GBPINR 260614">GBPINR 260614</option>
+    <option value="GBPINR 280714">GBPINR 280714</option>
+    <option value="GBPINR 290714">GBPINR 290714</option>
+    <option value="GBPINR 260814">GBPINR 260814</option>
+    <option value="GBPINR 270814">GBPINR 270814</option>
+    <option value="GBPINR 260914">GBPINR 260914</option>
+    <option value="GBPINR 291014">GBPINR 291014</option>
+    <option value="GBPINR 261114">GBPINR 261114</option>
+    <option value="GBPINR 291214">GBPINR 291214</option>
+</select>
+
+
+    <select id="GBPINR2015" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="GBPINR 280115">GBPINR 280115</option>
+    <option value="GBPINR 250215">GBPINR 250215</option>
+    <option value="GBPINR 270315">GBPINR 270315</option>
+    <option value="GBPINR 280415">GBPINR 280415</option>
+    <option value="GBPINR 270515">GBPINR 270515</option>
+    <option value="GBPINR 260615">GBPINR 260615</option>
+    <option value="GBPINR 290715">GBPINR 290715</option>
+    <option value="GBPINR 270815">GBPINR 270815</option>
+    <option value="GBPINR 280915">GBPINR 280915</option>
+    <option value="GBPINR 281015">GBPINR 281015</option>
+    <option value="GBPINR 261115">GBPINR 261115</option>
+    <option value="GBPINR 291215">GBPINR 291215</option>
+</select>
+
+
+    <select id="GBPINR2016" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="GBPINR 270116">GBPINR 270116</option>
+    <option value="GBPINR 250216">GBPINR 250216</option>
+    <option value="GBPINR 290316">GBPINR 290316</option>
+    <option value="GBPINR 270416">GBPINR 270416</option>
+    <option value="GBPINR 270516">GBPINR 270516</option>
+    <option value="GBPINR 280616">GBPINR 280616</option>
+    <option value="GBPINR 270716">GBPINR 270716</option>
+    <option value="GBPINR 290816">GBPINR 290816</option>
+    <option value="GBPINR 280916">GBPINR 280916</option>
+    <option value="GBPINR 261016">GBPINR 261016</option>
+    <option value="GBPINR 281116">GBPINR 281116</option>
+    <option value="GBPINR 281216">GBPINR 281216</option>
+</select>
+
+
+    <select id="GBPINR2017" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="GBPINR 270117">GBPINR 270117</option>
+    <option value="GBPINR 240217">GBPINR 240217</option>
+    <option value="GBPINR 290317">GBPINR 290317</option>
+    <option value="GBPINR 260417">GBPINR 260417</option>
+</select>
+
+
+    <select id="JPYINR2008" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="JPYINR 250908">JPYINR 250908</option>
+    <option value="JPYINR 271008">JPYINR 271008</option>
+    <option value="JPYINR 261108">JPYINR 261108</option>
+    <option value="JPYINR 291208">JPYINR 291208</option>
+</select>
+
+
+
+    <select id="JPYINR2009" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="JPYINR 280109">JPYINR 280109</option>
+    <option value="JPYINR 250209">JPYINR 250209</option>
+    <option value="JPYINR 270309">JPYINR 270309</option>
+    <option value="JPYINR 280409">JPYINR 280409</option>
+    <option value="JPYINR 270509">JPYINR 270509</option>
+    <option value="JPYINR 260609">JPYINR 260609</option>
+    <option value="JPYINR 290709">JPYINR 290709</option>
+    <option value="JPYINR 270809">JPYINR 270809</option>
+    <option value="JPYINR 280909">JPYINR 280909</option>
+    <option value="JPYINR 281009">JPYINR 281009</option>
+    <option value="JPYINR 261109">JPYINR 261109</option>
+    <option value="JPYINR 291209">JPYINR 291209</option>
+</select>
+
+
+
+    <select id="JPYINR2010" class="futureDates">
+    <option value="select" selected="">Select</option>
+    <option value="JPYINR 270110">JPYINR 270110</option>
+    <option value="JPYINR 240210">JPYINR 240210</option>
+    <option value="JPYINR 290310">JPYINR 290310</option>
+    <option value="JPYINR 280410">JPYINR 280410</option>
+    <option value="JPYINR 270510">JPYINR 270510</option>
+    <option value="JPYINR 280610">JPYINR 280610</option>
+    <option value="JPYINR 280710">JPYINR 280710</option>
+    <option value="JPYINR 270810">JPYINR 270810</option>
+    <option value="JPYINR 280910">JPYINR 280910</option>
+    <option value="JPYINR 271010">JPYINR 271010</option>
+    <option value="JPYINR 261110">JPYINR 261110</option>
+    <option value="JPYINR 291210">JPYINR 291210</option>
+</select>
+
+
+    <select id="JPYINR2011" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="JPYINR 270111">JPYINR 270111</option>
+    <option value="JPYINR 240211">JPYINR 240211</option>
+    <option value="JPYINR 290311">JPYINR 290311</option>
+    <option value="JPYINR 270411">JPYINR 270411</option>
+    <option value="JPYINR 270511">JPYINR 270511</option>
+    <option value="JPYINR 280611">JPYINR 280611</option>
+    <option value="JPYINR 270711">JPYINR 270711</option>
+    <option value="JPYINR 260811">JPYINR 260811</option>
+    <option value="JPYINR 290811">JPYINR 290811</option>
+    <option value="JPYINR 270911">JPYINR 270911</option>
+    <option value="JPYINR 280911">JPYINR 280911</option>
+    <option value="JPYINR 251011">JPYINR 251011</option>
+    <option value="JPYINR 271011">JPYINR 271011</option>
+    <option value="JPYINR 281111">JPYINR 281111</option>
+    <option value="JPYINR 281211">JPYINR 281211</option>
+</select>
+
+
+    <select id="JPYINR2012" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="JPYINR 270112">JPYINR 270112</option>
+    <option value="JPYINR 270212">JPYINR 270212</option>
+    <option value="JPYINR 280312">JPYINR 280312</option>
+    <option value="JPYINR 260412">JPYINR 260412</option>
+    <option value="JPYINR 290512">JPYINR 290512</option>
+    <option value="JPYINR 270612">JPYINR 270612</option>
+    <option value="JPYINR 270712">JPYINR 270712</option>
+    <option value="JPYINR 290812">JPYINR 290812</option>
+    <option value="JPYINR 260912">JPYINR 260912</option>
+    <option value="JPYINR 291012">JPYINR 291012</option>
+    <option value="JPYINR 271112">JPYINR 271112</option>
+    <option value="JPYINR 271212">JPYINR 271212</option>
+</select>
+
+
+    <select id="JPYINR2013" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="JPYINR 290113">JPYINR 290113</option>
+    <option value="JPYINR 260213">JPYINR 260213</option>
+    <option value="JPYINR 270313">JPYINR 270313</option>
+    <option value="JPYINR 290313">JPYINR 290313</option>
+    <option value="JPYINR 260413">JPYINR 260413</option>
+    <option value="JPYINR 290513">JPYINR 290513</option>l
+    <option value="JPYINR 260613">JPYINR 260613</option>
+    <option value="JPYINR 290713">JPYINR 290713</option>
+    <option value="JPYINR 280813">JPYINR 280813</option>
+    <option value="JPYINR 250913">JPYINR 250913</option>
+    <option value="JPYINR 260913">JPYINR 260913</option>
+    <option value="JPYINR 291013">JPYINR 291013</option>
+    <option value="JPYINR 271113">JPYINR 271113</option>
+    <option value="JPYINR 271213">JPYINR 271213</option>
+</select>
+
+
+    <select id="JPYINR2014" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="JPYINR 290114">JPYINR 290114</option>
+    <option value="JPYINR 250214">JPYINR 250214</option>
+    <option value="JPYINR 260214">JPYINR 260214</option>
+    <option value="JPYINR 260314">JPYINR 260314</option>
+    <option value="JPYINR 270314">JPYINR 270314</option>
+    <option value="JPYINR 280414">JPYINR 280414</option>
+    <option value="JPYINR 280514">JPYINR 280514</option>
+    <option value="JPYINR 260614">JPYINR 260614</option>
+    <option value="JPYINR 280714">JPYINR 280714</option>
+    <option value="JPYINR 290714">JPYINR 290714</option>
+    <option value="JPYINR 260814">JPYINR 260814</option>
+    <option value="JPYINR 270814">JPYINR 270814</option>
+    <option value="JPYINR 260914">JPYINR 260914</option>
+    <option value="JPYINR 291014">JPYINR 291014</option>
+    <option value="JPYINR 261114">JPYINR 261114</option>
+    <option value="JPYINR 291214">JPYINR 291214</option>
+</select>
+
+
+    <select id="JPYINR2015" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="JPYINR 280115">JPYINR 280115</option>
+    <option value="JPYINR 250215">JPYINR 250215</option>
+    <option value="JPYINR 270315">JPYINR 270315</option>
+    <option value="JPYINR 280415">JPYINR 280415</option>
+    <option value="JPYINR 270515">JPYINR 270515</option>
+    <option value="JPYINR 260615">JPYINR 260615</option>
+    <option value="JPYINR 290715">JPYINR 290715</option>
+    <option value="JPYINR 270815">JPYINR 270815</option>
+    <option value="JPYINR 280915">JPYINR 280915</option>
+    <option value="JPYINR 281015">JPYINR 281015</option>
+    <option value="JPYINR 261115">JPYINR 261115</option>
+    <option value="JPYINR 291215">JPYINR 291215</option>
+</select>
+
+
+    <select id="JPYINR2016" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="JPYINR 270116">JPYINR 270116</option>
+    <option value="JPYINR 250216">JPYINR 250216</option>
+    <option value="JPYINR 290316">JPYINR 290316</option>
+    <option value="JPYINR 270416">JPYINR 270416</option>
+    <option value="JPYINR 270516">JPYINR 270516</option>
+    <option value="JPYINR 280616">JPYINR 280616</option>
+    <option value="JPYINR 270716">JPYINR 270716</option>
+    <option value="JPYINR 290816">JPYINR 290816</option>
+    <option value="JPYINR 280916">JPYINR 280916</option>
+    <option value="JPYINR 261016">JPYINR 261016</option>
+    <option value="JPYINR 281116">JPYINR 281116</option>
+    <option value="JPYINR 281216">JPYINR 281216</option>
+</select>
+
+    <select id="JPYINR2017" class="futureDates">
+    <option value="select" selected="">select</option>
+    <option value="JPYINR 270117">JPYINR 270117</option>
+    <option value="JPYINR 240217">JPYINR 240217</option>
+    <option value="JPYINR 290317">JPYINR 290317</option>
+    <option value="JPYINR 260417">JPYINR 260417</option>
+</select>
+    <br>
+
+
+    <!-- index futures ends -->
+
+    <span> Enter Strike Price: </span>
+    <br>
+    <select id="strikePrice" class="hideThem">
+    <option value="select" selected="">select</option>
+    <option value="  0.00"> 0.00</option>
+    <option value=" 41.00"> 41.00</option>
+    <option value=" 41.25"> 41.25</option>
+    <option value=" 41.50"> 41.50</option>
+    <option value=" 41.75"> 41.75</option>
+    <option value=" 42.00"> 42.00</option>
+    <option value=" 42.25"> 42.25</option>
+    <option value=" 42.50"> 42.50</option>
+    <option value=" 42.75"> 42.75</option>
+    <option value=" 43.00"> 43.00</option>
+    <option value=" 43.25"> 43.25</option>
+    <option value=" 43.50"> 43.50</option>
+    <option value=" 43.75"> 43.75</option>
+    <option value=" 44.00"> 44.00</option>
+    <option value=" 44.25"> 44.25</option>
+    <option value=" 44.50"> 44.50</option>
+    <option value=" 44.75"> 44.75</option>
+    <option value=" 45.00"> 45.00</option>
+    <option value=" 45.25"> 45.25</option>
+    <option value=" 45.50"> 45.50</option>
+    <option value=" 45.75"> 45.75</option>
+    <option value=" 46.00"> 46.00</option>
+    <option value=" 46.25"> 46.25</option>
+    <option value=" 46.50"> 46.50</option>
+    <option value=" 46.75"> 46.75</option>
+    <option value=" 47.00"> 47.00</option>
+    <option value=" 47.25"> 47.25</option>
+    <option value=" 47.50"> 47.50</option>
+    <option value=" 47.75"> 47.75</option>
+    <option value=" 48.00"> 48.00</option>
+    <option value=" 48.25"> 48.25</option>
+    <option value=" 48.50"> 48.50</option>
+    <option value=" 48.75"> 48.75</option>
+    <option value=" 49.00"> 49.00</option>
+    <option value=" 49.25"> 49.25</option>
+    <option value=" 49.50"> 49.50</option>
+    <option value=" 49.75"> 49.75</option>
+    <option value=" 50.00"> 50.00</option>
+    <option value=" 50.25"> 50.25</option>
+    <option value=" 50.50"> 50.50</option>
+    <option value=" 50.75"> 50.75</option>
+    <option value=" 51.00"> 51.00</option>
+    <option value=" 51.25"> 51.25</option>
+    <option value=" 51.50"> 51.50</option>
+    <option value=" 51.75"> 51.75</option>
+    <option value=" 52.00"> 52.00</option>
+    <option value=" 52.25"> 52.25</option>
+    <option value=" 52.50"> 52.50</option>
+    <option value=" 52.75"> 52.75</option>
+    <option value=" 53.00"> 53.00</option>
+    <option value=" 53.25"> 53.25</option>
+    <option value=" 53.50"> 53.50</option>
+    <option value=" 53.75"> 53.75</option>
+    <option value=" 54.00"> 54.00</option>
+    <option value=" 54.25"> 54.25</option>
+    <option value=" 54.50"> 54.50</option>
+    <option value=" 54.75"> 54.75</option>
+    <option value=" 55.00"> 55.00</option>
+    <option value=" 55.25"> 55.25</option>
+    <option value=" 55.50"> 55.50</option>
+    <option value=" 55.75"> 55.75</option>
+    <option value=" 56.00"> 56.00</option>
+    <option value=" 56.25"> 56.25</option>
+    <option value=" 56.50"> 56.50</option>
+    <option value=" 56.75"> 56.75</option>
+    <option value=" 57.00"> 57.00</option>
+    <option value=" 57.25"> 57.25</option>
+    <option value=" 57.50"> 57.50</option>
+    <option value=" 57.75"> 57.75</option>
+    <option value=" 58.00"> 58.00</option>
+    <option value=" 58.25"> 58.25</option>
+    <option value=" 58.50"> 58.50</option>
+    <option value=" 58.75"> 58.75</option>
+    <option value=" 59.00"> 59.00</option>
+    <option value=" 59.25"> 59.25</option>
+    <option value=" 59.50"> 59.50</option>
+    <option value=" 59.75"> 59.75</option>
+    <option value=" 60.00"> 60.00</option>
+    <option value=" 60.25"> 60.25</option>
+    <option value=" 60.50"> 60.50</option>
+    <option value=" 60.75"> 60.75</option>
+    <option value=" 61.00"> 61.00</option>
+    <option value=" 61.25"> 61.25</option>
+    <option value=" 61.50"> 61.50</option>
+    <option value=" 61.75"> 61.75</option>
+    <option value=" 62.00"> 62.00</option>
+    <option value=" 62.25"> 62.25</option>
+    <option value=" 62.50"> 62.50</option>
+    <option value=" 62.75"> 62.75</option>
+    <option value=" 63.00"> 63.00</option>
+    <option value=" 63.25"> 63.25</option>
+    <option value=" 63.50"> 63.50</option>
+    <option value=" 63.75"> 63.75</option>
+    <option value=" 64.00"> 64.00</option>
+    <option value=" 64.25"> 64.25</option>
+    <option value=" 64.50"> 64.50</option>
+    <option value=" 64.75"> 64.75</option>
+    <option value=" 65.00"> 65.00</option>
+    <option value=" 65.25"> 65.25</option>
+    <option value=" 65.50"> 65.50</option>
+    <option value=" 65.75"> 65.75</option>
+    <option value=" 66.00"> 66.00</option>
+    <option value=" 66.25"> 66.25</option>
+    <option value=" 66.50"> 66.50</option>
+    <option value=" 66.75"> 66.75</option>
+    <option value=" 67.00"> 67.00</option>
+    <option value=" 67.25"> 67.25</option>
+    <option value=" 67.50"> 67.50</option>
+    <option value=" 67.75"> 67.75</option>
+    <option value=" 68.00"> 68.00</option>
+    <option value=" 68.25"> 68.25</option>
+    <option value=" 68.50"> 68.50</option>
+    <option value=" 68.75"> 68.75</option>
+    <option value=" 69.00"> 69.00</option>
+    <option value=" 69.25"> 69.25</option>
+    <option value=" 69.50"> 69.50</option>
+    <option value=" 69.75"> 69.75</option>
+    <option value=" 70.00"> 70.00</option>
+    <option value=" 70.25"> 70.25</option>
+    <option value=" 70.50"> 70.50</option>
+    <option value=" 70.75"> 70.75</option>
+    <option value=" 71.00"> 71.00</option>
+    <option value=" 71.25"> 71.25</option>
+    <option value=" 71.50"> 71.50</option>
+    <option value=" 71.75"> 71.75</option>
+</select>
+
+    <br>
+    <p style="text-align:center">Select a Time Period: </p>
+    <br>
+    <span>From:</span>
+    <input type="date" id="fromDate">
+    <span>To:</span>
+    <input type="date" id="toDate">
+
+    <br>
+    <span>Range From:</span>
+    <input type="text" value="0" id="fromStrike">
+    <span>To:</span>
+    <input type="text" value="80" id="toStrike">
+    </br>
+
+    <div class="col-sm-12 buttons">
+        <div class="checkbox">
+            <label><input type="checkbox" value="" id="at_hun">At hundreds.</label>
+        </div>
+    </div>
+
+    <br>
+<div class="col-sm-12 buttons">
+    <button class="btn btn-lg get-btn" type="button">GET RESULTS</button>
+</div>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js">
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".futureDates").hide();
+        });
+
+        instrumentType = null;
+        symbol = null;
+        year = null;
+        contract = null;
+        fu = null;
+
+        $("#symbolopt").on('change', function() {
+            symbol = $("select#symbolopt option:selected").val();
+            if (symbol == "select") {
+                symbol = null;
+            } else {
+                symbol = $("select#symbolopt option:selected").val();
+            }
+        });
+
+        $("#symbolfut").on('change', function() {
+            symbol = $("select#symbolfut option:selected").val();
+            if (symbol == "select") {
+                symbol = null;
+            } else {
+                symbol = $("select#symbolfut option:selected").val();
+            }
+        });
+
+        $("#instrumentType").on('change', function() {
+
+            instrumentType = $("select#instrumentType option:selected").val();
+
+            if (instrumentType == "select") {
+                instrumentType = null;
+            } else {
+                instrumentType = $("select#instrumentType option:selected").val();
+                if (instrumentType == "FUTCUR") {
+                    symbol = null;
+                    year = null;
+                    contract = null;
+                    fu = null;
+                    $(".hideThem").css({
+                        "display": "none"
+                    });
+                    $("#symbolopt").css({
+                        "display": "none"
+                    });
+                    $("#strikePrice").css({
+                        "display": "none"
+                    });
+                    $("#symbolfut").css({
+                        "display": "inline"
+                    });
+                }
+
+                if (instrumentType == "OPTCUR") {
+                    symbol = null;
+                    year = null;
+                    contract = null;
+                    fu = null;
+                    $(".futureDates").css({
+                        "display": "none"
+                    });
+                    $("#symbolfut").css({
+                        "display": "none"
+                    });
+                    $("#symbolopt").css({
+                        "display": "inline"
+                    });
+                    $("#strikePrice").css({
+                        "display": "inline"
+                    });
+                    symbol = $("select#symbolopt option:selected").val();
+                    year = $("select#contractYear option:selected").val();
+                    var toShow = "O" + symbol + year;
+                    $("#" + toShow).css({
+                        "display": "inline"
+                    });
+                    expiryDate = $("#O" + symbol + year +" option:selected").val();
+                }
+            }
+        });
+
+        $("#contractYear").on('change', function() {
+            year = $("select#contractYear option:selected").val();
+            if (year != "select") {
+                var instruMent = $("select#instrumentType option:selected").val();
+                if (instruMent == "FUTCUR") {
+                    var toShow = symbol + year;
+                    $(".futureDates").hide();
+                    $(".hideThem").hide();
+                    $("#strikePrice").css({
+                        "display": "none"
+                    });
+                    $("#" + toShow).css({
+                        "display": "inline"
+                    });
+                    expiryDate = $("#" + symbol + year +" option:selected").val();
+                }
+            }
+        });
+
+        $("#contractYear").on('change', function() {
+            year = $("select#contractYear option:selected").val();
+            if (year != "select") {
+                var instruMent = $("select#instrumentType option:selected").val();
+                if (instruMent == "OPTCUR") {
+                    var symbol = $("select#symbolopt option:selected").val();
+                    if (symbol != "select") {
+                        var toShow = "O" + symbol + year;
+                        $(".futureDates").hide();
+                        $(".hideThem").hide();
+                        $("#strikePrice").css({
+                            "display": "inline"
+                        });
+                        $("#" + toShow).css({
+                            "display": "inline"
+                        });
+                        expiryDate = $("O" + symbol + year +" option:selected").val();
+                    }
+                }
+            }
+        });
+
+        $("#symbolfut").on('change', function() {
+            year = $("select#contractYear option:selected").val();
+            if (year != "select") {
+                var instruMent = $("select#instrumentType option:selected").val();
+                if (instruMent == "FUTCUR") {
+                    var toShow = symbol + year;
+                    $(".hideThem").hide();
+                    $(".futureDates").hide();
+                    $("#strikePrice").css({
+                        "display": "none"
+                    });
+                    $("#" + toShow).css({
+                        "display": "inline"
+                    });
+                    expiryDate = $("#" + symbol + year +" option:selected").val();
+                }
+            }
+        });
+
+        $("#symbolopt").on('change', function() {
+            year = $("select#contractYear option:selected").val();
+            if (year != "select") {
+                var instruMent = $("select#instrumentType option:selected").val();
+                if (instruMent == "OPTCUR") {
+                    var toShow = "O" + symbol + year;
+                    $(".futureDates").hide();
+                    $(".hideThem").hide();
+                    $("#strikePrice").css({
+                        "display": "inline"
+                    });
+                    $("#" + toShow).css({
+                        "display": "inline"
+                    });
+                    expiryDate = $("#O" + symbol + year +" option:selected").val();
+                }
+            }
+        });
+
+        $("#contractYear").on('change', function() {
+            year = $("select#contractYear option:selected").val();
+            if (year == "select") {
+                year = null;
+            } else {
+                year = $("select#contractYear option:selected").val();
+            }
+
+        });
+
+        $("#strikePrice").on('change', function() {
+            strikePrice = parseFloat($("select#strikePrice option:selected").val().trim());
+        });
+
+        if ($("#at_hun").is(":checked")) {
+            var gap = 1;
+        } else {
+            var gap = 0;
+        }
+
+
+        $('.get-btn').on('click', function() {
+
+            $('.get-btn').attr('disabled', 'disabled');
+
+            if($("select#instrumentType option:selected").val().trim() == "select"){
+                alert("Please select an instrument");
+                return false;
+            }
+
+            if ($("select#instrumentType option:selected").val().trim() == "OPTCUR") {
+                fromDate = document.getElementById("fromDate").value;
+                toDate = document.getElementById("toDate").value;
+
+                var fromStrike = document.getElementById("fromStrike").value;
+                if (isNaN(parseFloat(fromStrike))) {
+                    alert("Please enter a valid interval.");
+                    return false;
+                }
+
+                var toStrike = document.getElementById("toStrike").value;
+                if (isNaN(parseFloat(toStrike))) {
+                    alert("Please enter a valid interval.");
+                    return false;
+                }
+
+                console.log("Ins type " + instrumentType + "Symbol type " + symbol + "Year " + year + "Contract " + contract + " from " + fromDate + " to " + toDate);
+                if((expiryDate == null) || (expiryDate === undefined)){
+                    expiryDate = $("#O" + symbol + year +" option:selected").val();  
+                }
+
+                if ((instrumentType == null) || (symbol == null) || (year == null) || (expiryDate == null) || (fromDate == null || fromDate == "") || (toDate == null || toDate == "")) {
+                    alert("Something is empty fix it");
+                    return false;
+                } else {
+                    var fromYear = fromDate.substring(0, 4).trim();
+                    var fromMonth = fromDate.substring(5, 7).trim();
+                    var fromDay = fromDate.substring(8, fromDate.length).trim();
+                    var toYear = toDate.substring(0, 4).trim();
+                    var toMonth = toDate.substring(5, 7).trim();
+                    var toDay = toDate.substring(8, toDate.length).trim();
+
+                    toDate = toDay + "-" + toMonth + "-" + toYear;
+                    fromDate = fromDay + "-" + fromMonth + "-" + fromYear;
+
+                    console.log("Expiry date is " + expiryDate);
+
+                    $.ajax({
+                        url: '/nsecur/' + instrumentType + '/' + symbol + '/' + year + '/' + expiryDate + '/' + fromDate + '/' + toDate + '/' + fromStrike + '/' + toStrike + '/' + gap + '/' + fu,
+                        type: 'POST',
+                        processData: true,
+                        contentType: false,
+                        success: function(filename) {
+                            location.href = '/download/' + filename;
+                            $('.get-btn').removeAttr('disabled');
+                        },
+                        statusCode: {
+                            404: function(response) {
+                                ri('serverresponse').innerHTML = response.responseText;
+                            },
+                            503: function(response) {
+                                ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                            }
+                        }
+                    });
+                }
+            }
+
+            if ($("select#instrumentType option:selected").val().trim() == "FUTCUR") {
+
+                fromDate = document.getElementById("fromDate").value;
+                
+                toDate = document.getElementById("toDate").value;
+
+                symbol = $("#symbolfut option:selected").val();
+
+                instrumentType = $("select#instrumentType option:selected").val().trim();
+
+                strikePrice = "select";
+
+                expiryDate = $("#" + symbol + year +" option:selected").val();
+
+                fu = 1;
+
+                var fromStrike = document.getElementById("fromStrike").value;
+                if (isNaN(parseFloat(fromStrike))) {
+                    alert("Please enter a valid interval.");
+                    return false;
+                }
+
+                var toStrike = document.getElementById("toStrike").value;
+                if (isNaN(parseFloat(toStrike))) {
+                    alert("Please enter a valid interval.");
+                    return false;
+                }
+
+                    var fromYear = fromDate.substring(0, 4).trim();
+                    var fromMonth = fromDate.substring(5, 7).trim();
+                    var fromDay = fromDate.substring(8, fromDate.length).trim();
+                    var toYear = toDate.substring(0, 4).trim();
+                    var toMonth = toDate.substring(5, 7).trim();
+                    var toDay = toDate.substring(8, toDate.length).trim();
+
+                    toDate = toDay + "-" + toMonth + "-" + toYear;
+                    fromDate = fromDay + "-" + fromMonth + "-" + fromYear;
+
+                    $.ajax({
+                        url: '/nsecur/' + instrumentType + '/' + symbol + '/' + year + '/' + expiryDate + '/' + fromDate + '/' + toDate + '/' + fromStrike + '/' + toStrike + '/' + gap + '/' + fu,
+                        type: 'POST',
+                        processData: true,
+                        contentType: false,
+                        success: function(filename) {
+                            location.href = '/download/' + filename;
+                            $('.get-btn').removeAttr('disabled');
+                        },
+                        statusCode: {
+                            404: function(response) {
+                                ri('serverresponse').innerHTML = response.responseText;
+                            },
+                            503: function(response) {
+                                ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                            }
+                        }
+                    });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

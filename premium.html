@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .row {
+            margin-top: 80px;
+        }
+        
+        .select-btn {
+            color: #ffffff;
+            background-color: #F89406;
+            border: none;
+        }
+        
+        .select-btn:hover,
+        .select-btn:focus,
+        .select-btn:active,
+        .select-btn.active {
+            color: #ffffff;
+            background-color: #FA8900;
+            border: none;
+        }
+        
+        .upload-btn {
+            color: #ffffff;
+            background-color: #10B6EE;
+            border: none;
+        }
+        
+        .upload-btn:hover,
+        .upload-btn:focus,
+        .upload-btn:active,
+        .upload-btn.active {
+            color: #ffffff;
+            background-color: #6BC9E8;
+            border: none;
+        }
+        
+        .moneycontrol-btn {
+            color: #ffffff;
+            background-color: #33FF3C;
+            border: none;
+        }
+        
+        .moneycontrol-btn:hover,
+        .moneycontrol-btn:focus,
+        .moneycontrol-btn:active,
+        .moneycontrol-btn.active {
+            color: #ffffff;
+            background-color: #33FF77;
+            border: none;
+        }
+        
+        h4 {
+            padding-bottom: 30px;
+            color: #B8BDC1;
+        }
+        
+        .glyphicon {
+            font-size: 5em;
+            color: #9CA3A9;
+        }
+        
+        h2 {
+            margin-top: 15px;
+            color: #68757E;
+        }
+        
+        .panel {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            height:250px;
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .main-container {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                width: 450px;
+            }
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        .btn:focus,
+        .upload-btn:focus {
+            outline: 0 !important;
+        }
+        
+        #serverresponse {
+            color: red;
+            font-family: helvetica;
+        }
+        
+        #plusValue {
+            text-align: center;
+        }
+        
+        #inputQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .buttons {
+            margin-top: 10px;
+        }
+        
+        #strike_div {
+            display: none;
+        }
+        
+        .mil {
+            font-size: 20px;
+            font-family: helvetica;
+            margin-top: 5px;
+        }
+    </style>
+    <title>Upload a File</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+</head>
+
+<body>
+
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/csv">LTP Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/tick">TICK Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="https://nameless-waters-33613.herokuapp.com">STOPLOSS Logic</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="/premium">Premium</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">Align CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currency">Align Currency CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/oresults">O Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/ohol">OHOL Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencyohol">OHOL Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencycsv">LTP Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/nifty">BATTLE GROUND</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+
+
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="col-sm-6">
+                                    <span class="mil">Input Date to Check from:</span>
+                                </div>
+                                <div class="col-sm-6 mil">
+                                    <input class="col-sm-4" id="fdd" placeHolder="dd" type="text">
+                                    <input class="col-sm-4" id="fmm" placeHolder="mm" type="text">
+                                    <input class="col-sm-4" id="fyy" placeHolder="yy" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="col-sm-6">
+                                    <span class="mil">Date of Expiry:</span>
+                                </div>
+                                <div class="col-sm-6 mil">
+                                    <input class="col-sm-4" id="dd" placeHolder="dd" type="text">
+                                    <input class="col-sm-4" id="mm" placeHolder="mm" type="text">
+                                    <input class="col-sm-4" id="yy" placeHolder="yy" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-sm-offset-3">
+                                    <input class="col-sm-12 form-control" style="margin-top:5px;" id="strikeprice" placeHolder="Enter a Strike Price." type="text">
+                            </div>
+
+                            <div style="margin-top:8px;" class="col-sm-4 col-sm-offset-4">
+                                      <select class="form-control meth" id="sel1">
+                                            <option value = 1>Call</option>
+                                            <option value = 2>Put</option>
+                                     </select>
+                            </div>
+
+                            <div class="col-sm-6 col-sm-offset-3">
+                                    <button class="btn btn-lg btn-success premium-btn" style="margin-top:5px;" type="button">Calculate Premium</button>
+                            </div>
+
+                            <div class="col-sm-6 col-sm-offset-3">
+                                    <p id="premium_ret" style="text-align:center;font-family:helvetica;font-size:24px;"></p>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js">
+    </script>
+    <script>
+        var socket = io();
+
+        socket.on('takePremium',function(data){
+            console.log(data);
+            document.getElementById("premium_ret").innerHTML = data;
+            $('.premium-btn').removeAttr('disabled');
+        });
+
+        $('.premium-btn').on('click', function() {
+            $('.premium-btn').attr('disabled', 'disabled');
+            var strikePrice = document.getElementById("strikeprice").value;
+            if (isNaN(parseFloat(strikePrice))) {
+                alert("Please enter a valid fixed strike price.");
+                return false;
+            }
+
+            var yy = document.getElementById("yy").value;
+            var mm = document.getElementById("mm").value;
+            var dd = document.getElementById("dd").value;
+
+            if (isNaN(parseInt(yy)) || isNaN(parseInt(mm)) || isNaN(parseInt(dd))) {
+                alert("Please enter a valid expiry date.");
+                return false;
+            }
+
+
+            var fyy = document.getElementById("fyy").value;
+            var fmm = document.getElementById("fmm").value;
+            var fdd = document.getElementById("fdd").value;
+
+            if (isNaN(parseInt(fyy)) || isNaN(parseInt(fmm)) || isNaN(parseInt(fdd))) {
+                alert("Please enter a valid date.");
+                return false;
+            }
+
+            var type = parseInt($("select.meth option:selected").val());
+            var strikedata = {"strikeprice":strikePrice, "fromdate":(fmm+"/"+fdd+"/"+fyy).toString(), "expirydate":(mm+"/"+dd+"/"+yy).toString(), "type":type};
+            document.getElementById("premium_ret").innerHTML = "Calculating...";
+            socket.emit('givePremiumPrice', strikedata);
+        });        
+    </script>
+</body>
+
+</html>

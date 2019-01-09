@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Year wise Graphs</title>
+    <style>
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        path {
+            fill: none;
+            stroke: teal;
+            stroke-width: 2px;
+        }
+
+        svg {
+            position: absolute;
+            top: 10%;
+            left: 7%;
+            padding: 10px;
+        }
+
+        circle {
+            fill: red;
+        }
+
+        .tooltip {
+            position: absolute;
+            width: 120px;
+            height: 110px;
+            padding: 2px;
+            font-family: 'Josefin Sans', sans-serif;
+            background: lightsteelblue;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .tooltip: hover {
+            cursor: pointer;
+        }
+
+        .details {
+            position: absolute;
+            width: 120px;
+            padding: 2px;
+            font-family: 'Josefin Sans', sans-serif;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 100;
+            top:70%;
+            left:45%;
+        }
+
+        .loader {
+          position: absolute;
+          top: 30%;
+          left:43%;
+          border: 16px solid #eee;
+          border-radius: 50%;
+          border-top: 16px solid teal;
+          width: 120px;
+          height: 120px;
+          -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+        }
+
+        @-webkit-keyframes spin {
+          0% { -webkit-transform: rotate(0deg); }
+          100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+
+    <div class="col-sm-12">
+        <select class="form-control carnage">
+        <option>TATAMOTORS</option>
+        <option>HINDALCO</option>
+        <option>TATAMTRDVR</option>
+        <option>POWERGRID</option>
+        <option>GAIL</option>
+        <option>BHEL</option>
+        <option>KOTAKBANK</option>
+        <option>NTPC</option>
+        <option>CIPLA</option>
+        <option>BANKBARODA</option>
+        <option>INDUSINDBK</option>
+        <option>ICICIBANK</option>
+        <option>SBIN</option>
+        <option>TATASTEEL</option>
+        <option>AXISBANK</option>
+        <option>LUPIN</option>
+        <option>HINDUNILVR</option>
+        <option>SUNPHARMA</option>
+        <option>ONGC</option>
+        <option>BPCL</option>
+        <option>GRASIM</option>
+        <option>DRREDDY</option>
+        <option>AUROPHARMA</option>
+        <option>YESBANK</option>
+        <option>ADANIPORTS</option>
+        <option>ITC</option>
+        <option>EICHERMOT</option>
+        <option>TATAPOWER</option>
+        <option>LT</option>
+        <option>INFRATEL</option>
+        <option>HDFC</option>
+        <option>BOSCHLTD</option>
+        <option>ULTRACEMCO</option>
+        <option>IDEA</option>
+        <option>TECHM</option>
+        <option>HDFCBANK</option>
+        <option>RELIANCE</option>
+        <option>HEROMOTOCO</option>
+        <option>INFY</option>
+        <option>MARUTI</option>
+        <option>WIPRO</option>
+        <option>HCLTECH</option>
+        <option>BAJAJ-AUTO</option>
+        <option>COALINDIA</option>
+        <option>ASIANPAINT</option>
+        <option>ACC</option>
+        <option>TCS</option>
+        <option>ZEEL</option>
+        <option>BHARTIARTL</option>
+        <option>AMBUJACEM</option>
+        <option>M&M</option>
+    </select>
+    </div>
+
+    <div class="loader"></div>
+    <div class="details"></div>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+
+        function plotIt(data) {
+
+            var sym = $(".carnage option:selected").text().trim();
+
+            var pi = function(a) {
+                return parseInt(a);
+            }
+
+            var pf = function(a) {
+                return parseFloat(a);
+            }
+
+            var details = d3.select(".details");
+
+            var windowWidth = window.innerWidth - 100;
+            var windowHeight = window.innerHeight - 100;
+
+            var xScale = d3.scaleLinear().domain([0, data.length * 3])
+                .range([0, windowWidth - 200]);
+            var yScale = d3.scaleLinear().range([windowHeight - 200, 0]);
+
+            yScale.domain(d3.extent(data, function(d) {
+                return pf(d.Open);
+            }));
+
+            var yAxis = d3.axisLeft()
+                          .scale(yScale);
+
+            var svg = d3.select("body").append("svg")
+                                       .attr("width", windowWidth)
+                                       .attr("height", windowHeight)
+                                       .append("g")
+                                       .attr("transform", "translate(40, 20)");
+
+            var path = svg.append("path");
+
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+            // var details = d3.select("body").append("div")
+            //     .attr("class", "details");
+
+            var line = d3.line()
+                .x(function(d, i) {
+                    return xScale((i + 1) * 3);
+                })
+                .y(function(d, i) {
+                    return yScale(d.Open);
+                });
+
+            path.attr("d", line(data));
+
+
+            var lines = svg.selectAll("line").data(data)
+                .enter().append("line").attr("x1", function(d, i) {
+                    return xScale((i + 1) * 3);
+                })
+                .attr("y1", 0)
+                .attr("x2", function(d, i) {
+                    return xScale((i + 1) * 3);
+                })
+                .attr("y2", windowHeight - 200)
+                .attr("stroke-width", 5)
+                .attr("stroke", "#d3d3d3")
+                .attr("opacity", 0)
+                .on("mouseover", function(d) {
+                    d3.select(this)
+                      .attr("opacity", 1);
+                    div.transition()
+                        .duration(1000)
+                        .style("opacity", .9);
+                    div.html(sym +"<br>Date : " + d.Date + "<br> Open : " + pf(d.Open) + "<br> High : " + pf(d.High) + "<br> Low : " + pf(d.Low) + "<br> LTP : " + pf(d.LTP))
+                        .style("left", (d3.event.pageX + 10) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+
+                    details.html("");
+
+                    details.html(sym +"<br>Date : " + d.Date + "<br> Open : " + pf(d.Open) + "<br> High : " + pf(d.High) + "<br> Low : " + pf(d.Low) + "<br> LTP : " + pf(d.LTP))
+                })
+                .on("mousemove", function(d) {
+                    d3.select(this)
+                      .attr("cursor", "pointer")
+                      .attr("opacity", 1);
+                    div.transition()
+                        .duration(1000)
+                        .style("opacity", .9);
+                    div.html(sym +"<br>Date : " + d.Date + "<br> Open : " + pf(d.Open) + "<br> High : " + pf(d.High) + "<br> Low : " + pf(d.Low) + "<br> LTP : " + pf(d.LTP))
+                        .style("left", (d3.event.pageX + 10) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+
+                    details.html("");
+
+                    details.html(sym +"<br>Date : " + d.Date + "<br> Open : " + pf(d.Open) + "<br> High : " + pf(d.High) + "<br> Low : " + pf(d.Low) + "<br> LTP : " + pf(d.LTP))
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this)
+                      .transition()
+                      .duration(300)
+                      .attr("cursor", "pointer")
+                      .attr("opacity", 0);
+                    div.transition()
+                        .duration(1000)
+                        .style("opacity", 0);
+                });                
+
+            lines.exit().remove();
+
+            var circles = svg.selectAll("circle").data(data);
+            circles.enter().append("circle").attr("r", 2)
+                .attr("cx", function(d, i) {
+                    return xScale((i + 1) * 3);
+                })
+                .attr("cy", function(d) {
+                    return yScale(pf(d.Open));
+                })
+
+            circles.exit().remove();
+
+            var tooltip = svg.append("g")
+                .attr("class", "tooltip")
+                .style("display", "none");
+
+            tooltip.append("text")
+                .attr("x", 15)
+                .attr("dy", "1.2em")
+                .style("font-size", "1.25em")
+                .attr("font-weight", "bold");
+
+            svg.append("g").attr("transform", "translate(-10, 0)").call(yAxis);
+        }
+
+        var makeRequest = function(sym){
+            $.ajax({
+                url: '/giveGraph/' + sym,
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                success: function(bigLoad) {
+
+                    $(".loader").css("display", "none");
+
+                    plotIt(JSON.parse(bigLoad));
+
+                },
+                statusCode: {
+                    404: function(response) {
+                        alert("Something messed up please try again!");
+                    },
+                    503: function(response) {
+                        alert("Something messed up please try again!");
+                    }
+                }
+            });
+        }
+
+        $(".carnage").change(function() {
+
+            var b = $('body').find("svg");
+
+            b.remove();
+
+            $(".loader").show();
+
+            var sym = $(".carnage option:selected").text().trim();
+
+            makeRequest(sym);
+
+        });
+
+    $( document ).ready(function() {
+
+            var sym = $(".carnage option:selected").text().trim();
+            makeRequest(sym);
+
+    });
+
+    </script>
+
+</body>
+
+</html>
+
+

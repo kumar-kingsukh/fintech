@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .row {
+            margin-top: 80px;  
+        }
+        
+        .upload-btn {
+            color: #ffffff;
+            background-color: #10B6EE;
+            border: none;
+        }
+        
+        .upload-btn:hover,
+        .upload-btn:focus,
+        .upload-btn:active,
+        .upload-btn.active {
+            color: #ffffff;
+            background-color: #6BC9E8;
+            border: none;
+        }
+        
+        h4 {
+            padding-bottom: 30px;
+            color: #B8BDC1;
+        }
+        
+        .glyphicon {
+            font-size: 5em;
+            color: #9CA3A9;
+        }
+        
+        h2 {
+            margin-top: 15px;
+            color: #68757E;
+        }
+        
+        .panel {  
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .main-container {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .container {
+                width: 450px;
+            }
+        }
+        
+        #upload-input {
+            display: none;
+        }
+        
+        .btn:focus,
+        .upload-btn:focus {
+            outline: 0 !important;
+        }
+        
+        #serverresponse {
+            color: red;
+            font-family: helvetica;
+        }
+        
+        #plusValue {
+            text-align: center;
+        }
+        
+        #inputQuan {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        #initialStrike {
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .buttons {
+            margin-top: 10px;
+        }
+        
+        span {
+            font-weight: 600;
+        }
+        
+        .sel-com {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        body {
+            font-family: sans-serif;
+        }
+        
+        .ck-button {
+            cursor: pointer;
+            margin: 4px;
+            background-color: #EFEFEF;
+            border-radius: 4px;
+            border: 1px solid #D0D0D0;
+            overflow: auto;
+            float: left;
+        }
+        
+        .ck-button:hover {
+            cursor: pointer;
+            background: white;
+        }
+        
+        .ck-button label {
+            cursor: pointer;
+            float: left;
+            width: 4.0em;
+        }
+        
+        .ck-button label span {
+            cursor: pointer;
+            text-align: center;
+            padding: 3px 0px;
+            display: block;
+        }
+        
+        .ck-button label input {
+            cursor: pointer;
+            position: absolute;
+            z-index: -10;
+        }
+        
+        .ck-button input:checked+span {
+            cursor: pointer;
+            background-color: #008080;
+            color: #fff;
+        }
+
+        .dante{
+            margin-top:3px;
+        }
+    </style>
+    <title>LTP LOGIC</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16">
+</head>
+
+<body>
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="javascript:void(0);"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/csv">LTP Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/tick">TICK Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://nameless-waters-33613.herokuapp.com">STOPLOSS Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/premium">Premium</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">Align CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currency">Align Currency CEPE</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/cepe">O Results</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/ohol">OHOL Logic</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencyohol">OHOL Currency</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/currencycsv">LTP Currency</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <span class="glyphicon glyphicon-cloud-upload"></span>
+                        <h2>LTP LOGIC</h2>
+                        <p id='serverresponse'></p>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="plusValue" placeHolder="Please Enter the Plus Value" type="text">
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input class="form-control" id="inputQuan" placeHolder="Please Enter the Quantities" type="text">
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <select class="form-control sel-com">
+
+                                <option>USDINR 13 JAN TO FEB</option>
+                                <option>USDINR 13 FEB</option>
+                                <option>USDINR 13 FEB TO MAR</option>
+                                <option>USDINR 13 MAR TO APR</option>
+                                <option>USDINR 13 APR TO MAY</option>
+                                <option>USDINR 13 MAY TO JUN</option>
+                                <option>USDINR 13 JUN TO JUL</option>
+                                <option>USDINR 13 JUL TO AUG</option>
+                                <option>USDINR 13 AUG TO SEP</option>
+                                <option>USDINR 13 SEP TO OCT</option>
+                                <option>USDINR 13 OCT TO NOV</option>
+                                <option>USDINR 13 NOV TO DEC</option>
+
+                                <option>USDINR 14 JAN TO FEB</option>
+                                <option>USDINR 14 FEB</option>
+                                <option>USDINR 14 FEB TO MAR</option>
+                                <option>USDINR 14 MAR TO APR</option>
+                                <option>USDINR 14 APR TO MAY</option>
+                                <option>USDINR 14 MAY TO JUN</option>
+                                <option>USDINR 14 JUN TO JUL</option>
+                                <option>USDINR 14 JUL TO AUG</option>
+                                <option>USDINR 14 AUG TO SEP</option>
+                                <option>USDINR 14 SEP TO OCT</option>
+                                <option>USDINR 14 OCT TO NOV</option>
+                                <option>USDINR 14 NOV TO DEC</option>
+
+                                <option>USDINR 15 JAN TO FEB</option>
+                                <option>USDINR 15 FEB</option>
+                                <option>USDINR 15 FEB TO MAR</option>
+                                <option>USDINR 15 MAR TO APR</option>
+                                <option>USDINR 15 APR TO MAY</option>
+                                <option>USDINR 15 MAY TO JUN</option>
+                                <option>USDINR 15 JUN TO JUL</option>
+                                <option>USDINR 15 JUL TO AUG</option>
+                                <option>USDINR 15 AUG TO SEP</option>
+                                <option>USDINR 15 SEP TO OCT</option>
+                                <option>USDINR 15 OCT TO NOV</option>
+                                <option>USDINR 15 NOV TO DEC</option>
+
+                                <option>USDINR 16 JAN TO FEB</option>
+                                <option>USDINR 16 FEB</option>
+                                <option>USDINR 16 FEB TO MAR</option>
+                                <option>USDINR 16 MAR TO APR</option>
+                                <option>USDINR 16 APR TO MAY</option>
+                                <option>USDINR 16 MAY TO JUN</option>
+                                <option>USDINR 16 JUN TO JUL</option>
+                                <option>USDINR 16 JUL TO AUG</option>
+                                <option>USDINR 16 AUG TO SEP</option>
+                                <option>USDINR 16 SEP TO OCT</option>
+                                <option>USDINR 16 OCT TO NOV</option>
+                                <option>USDINR 16 NOV TO DEC</option>
+
+                                <option>NIFTY 15 JAN TO FEB</option>
+                                <option>NIFTY 15 MAR TO APR</option>
+                                <option>NIFTY 15 MAY TO JUN</option>
+                                <option>NIFTY 15 JUL TO AUG</option>
+                                <option>NIFTY 15 SEP TO OCT</option>
+                                <option>NIFTY 15 OCT TO NOV</option>
+                                <option>NIFTY 15 NOV TO DEC</option>
+                                <option>NIFTY 16</option>
+
+                                <option>TCS 16 JAN TO FEB</option>
+                                <option>TCS 16 MAR TO APR</option>
+                                <option>TCS 16 MAY TO JUN</option>
+                                <option>TCS 16 JUL TO AUG</option>
+                                <option>TCS 16 SEP TO OCT</option>
+                                <option>TCS 16 OCT TO NOV</option>
+                                <option>TCS 16 NOV TO DEC</option>
+
+                                <option>LT 16 JAN TO FEB</option>
+                                <option>LT 16 MAR TO APR</option>
+                                <option>LT 16 MAY TO JUN</option>
+                                <option>LT 16 JUL TO AUG</option>
+                                <option>LT 16 SEP TO OCT</option>
+                                <option>LT 16 OCT TO NOV</option>
+                                <option>LT 16 NOV TO DEC</option>
+                                
+                                <option>BHEL 15 JAN TO FEB</option>
+                                <option>BHEL 15 FEB TO MAR</option>
+                                <option>BHEL 15 MAR TO APR</option>
+                                <option>BHEL 15 APR TO MAY</option>
+                                <option>BHEL 15 MAY TO JUN</option>
+                                <option>BHEL 15 JUN TO JUL</option>
+                                <option>BHEL 15 JUL TO AUG</option>
+                                <option>BHEL 15 AUG TO SEP</option>
+                                <option>BHEL 15 SEP TO OCT</option>
+                                <option>BHEL 15 OCT TO NOV</option>
+                                <option>BHEL 15 NOV TO DEC</option>
+
+                                <option>COALINDIA 15 JAN TO FEB</option>
+                                <option>COALINDIA 15 FEB TO MAR</option>
+                                <option>COALINDIA 15 MAR TO APR</option>
+                                <option>COALINDIA 15 APR TO MAY</option>
+                                <option>COALINDIA 15 MAY TO JUN</option>
+                                <option>COALINDIA 15 JUN TO JUL</option>
+                                <option>COALINDIA 15 JUL TO AUG</option>
+                                <option>COALINDIA 15 AUG TO SEP</option>
+                                <option>COALINDIA 15 SEP TO OCT</option>
+                                <option>COALINDIA 15 OCT TO NOV</option>
+                                <option>COALINDIA 15 NOV TO DEC</option>
+
+                                <option>HDFC 15 JAN TO FEB</option>
+                                <option>HDFC 15 FEB TO MAR</option>
+                                <option>HDFC 15 MAR TO APR</option>
+                                <option>HDFC 15 APR TO MAY</option>
+                                <option>HDFC 15 MAY TO JUN</option>
+                                <option>HDFC 15 JUN TO JUL</option>
+                                <option>HDFC 15 JUL TO AUG</option>
+                                <option>HDFC 15 AUG TO SEP</option>
+                                <option>HDFC 15 SEP TO OCT</option>
+                                <option>HDFC 15 OCT TO NOV</option>
+                                <option>HDFC 15 NOV TO DEC</option>
+
+                                <option>HINDALCO 15 JAN TO FEB</option>
+                                <option>HINDALCO 15 FEB TO MAR</option>
+                                <option>HINDALCO 15 MAR TO APR</option>
+                                <option>HINDALCO 15 APR TO MAY</option>
+                                <option>HINDALCO 15 MAY TO JUN</option>
+                                <option>HINDALCO 15 JUN TO JUL</option>
+                                <option>HINDALCO 15 JUL TO AUG</option>
+                                <option>HINDALCO 15 AUG TO SEP</option>
+                                <option>HINDALCO 15 SEP TO OCT</option>
+                                <option>HINDALCO 15 OCT TO NOV</option>
+                                <option>HINDALCO 15 NOV TO DEC</option>
+
+                                <option>ICICIBANK 15 JAN TO FEB</option>
+                                <option>ICICIBANK 15 FEB TO MAR</option>
+                                <option>ICICIBANK 15 MAR TO APR</option>
+                                <option>ICICIBANK 15 APR TO MAY</option>
+                                <option>ICICIBANK 15 MAY TO JUN</option>
+                                <option>ICICIBANK 15 JUN TO JUL</option>
+                                <option>ICICIBANK 15 JUL TO AUG</option>
+                                <option>ICICIBANK 15 AUG TO SEP</option>
+                                <option>ICICIBANK 15 SEP TO OCT</option>
+                                <option>ICICIBANK 15 OCT TO NOV</option>
+                                <option>ICICIBANK 15 NOV TO DEC</option>
+
+                                <option>INFY 15 JAN TO FEB</option>
+                                <option>INFY 15 FEB TO MAR</option>
+                                <option>INFY 15 MAR TO APR</option>
+                                <option>INFY 15 APR TO MAY</option>
+                                <option>INFY 15 MAY TO JUN</option>
+                                <option>INFY 15 JUN TO JUL</option>
+                                <option>INFY 15 JUL TO AUG</option>
+                                <option>INFY 15 AUG TO SEP</option>
+                                <option>INFY 15 SEP TO OCT</option>
+                                <option>INFY 15 OCT TO NOV</option>
+                                <option>INFY 15 NOV TO DEC</option>
+
+                                <option>ITC 15 JAN TO FEB</option>
+                                <option>ITC 15 FEB TO MAR</option>
+                                <option>ITC 15 MAR TO APR</option>
+                                <option>ITC 15 APR TO MAY</option>
+                                <option>ITC 15 MAY TO JUN</option>
+                                <option>ITC 15 JUN TO JUL</option>
+                                <option>ITC 15 JUL TO AUG</option>
+                                <option>ITC 15 AUG TO SEP</option>
+                                <option>ITC 15 SEP TO OCT</option>
+                                <option>ITC 15 OCT TO NOV</option>
+                                <option>ITC 15 NOV TO DEC</option>
+
+                                <option>ONGC 15 JAN TO FEB</option>
+                                <option>ONGC 15 FEB TO MAR</option>
+                                <option>ONGC 15 MAR TO APR</option>
+                                <option>ONGC 15 APR TO MAY</option>
+                                <option>ONGC 15 MAY TO JUN</option>
+                                <option>ONGC 15 JUN TO JUL</option>
+                                <option>ONGC 15 JUL TO AUG</option>
+                                <option>ONGC 15 AUG TO SEP</option>
+                                <option>ONGC 15 SEP TO OCT</option>
+                                <option>ONGC 15 OCT TO NOV</option>
+                                <option>ONGC 15 NOV TO DEC</option>
+
+                                <option>SBIN 15 JAN TO FEB</option>
+                                <option>SBIN 15 FEB TO MAR</option>
+                                <option>SBIN 15 MAR TO APR</option>
+                                <option>SBIN 15 APR TO MAY</option>
+                                <option>SBIN 15 MAY TO JUN</option>
+                                <option>SBIN 15 JUN TO JUL</option>
+                                <option>SBIN 15 JUL TO AUG</option>
+                                <option>SBIN 15 AUG TO SEP</option>
+                                <option>SBIN 15 SEP TO OCT</option>
+                                <option>SBIN 15 OCT TO NOV</option>
+                                <option>SBIN 15 NOV TO DEC</option>
+
+                            </select>
+                        </div>
+
+                        <div style="margin-top:8px;" class="col-sm-4 col-sm-offset-4">
+                            <span>Slect a Year</span>
+                            <select class="form-control meth" id="nseYear">
+                                        <option value ="2015"> Apply 2015 </option>
+                                        <option value = "2016"> Apply 2016 </option>
+                                 </select><br>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-6" style="border-right: 1px solid black">
+                                <h3> Buy Section </h3>
+                                <div class="col-sm-6">
+                                    <p>This Month </p>
+
+                                    <div class="col-sm-12">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstBuyTmStrike" placeHolder="STK" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstBuyTmQty" placeHolder="QTY" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstBuyTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstBuyTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="1"><span>CE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="2"><span>PE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="firstStrikeTmCE" value="1" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="firstStrikeTmCE" value="1"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="firstStrikeTmPE" value="2" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="firstStrikeTmPE" value="2"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondBuyTmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondBuyTmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondBuyTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondBuyTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="3"><span>CE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="4"><span>PE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="secondStrikeTmCE" value="3" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="secondStrikeTmCE" value="3"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="secondStrikeTmPE" value="4" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="secondStrikeTmPE" value="4"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdBuyTmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdBuyTmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdBuyTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdBuyTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="5"><span>CE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="6"><span>PE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="thirdStrikeTmCE" value="5" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="thirdStrikeTmCE" value="5"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="thirdStrikeTmPE" value="6" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="thirdStrikeTmPE" value="6"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthBuyTmStrike" placeHolder="STK" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthBuyTmQty" placeHolder="QTY" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthBuyTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthBuyTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="25"><span>CE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                              <input type="checkbox" class="checkcepe" value="26"><span>PE</span>
+                                           </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="fourthStrikeTmCE" value="25" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="fourthStrikeTmCE" value="25"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="fourthStrikeTmPE" value="26" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="fourthStrikeTmPE" value="26"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>Next Month </p>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="firstBuyNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="firstBuyNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstBuyNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstBuyNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="7"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="8"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="firstStrikeNmCE" value="7" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="firstStrikeNmCE" value="7"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="firstStrikeNmPE" value="8" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="firstStrikeNmPE" value="8"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondBuyNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondBuyNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondBuyNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondBuyNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="9"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="10"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="secondStrikeNmCE" value="9" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="secondStrikeNmCE" value="9"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="secondStrikeNmPE" value="10" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="secondStrikeNmPE" value="10"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdBuyNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdBuyNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdBuyNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdBuyNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="11"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="12"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="thirdStrikeNmCE" value="11" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="thirdStrikeNmCE" value="11"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="thirdStrikeNmPE" value="12" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="thirdStrikeNmPE" value="12"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="fourthBuyNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="fourthBuyNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthBuyNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthBuyNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="27"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="28"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="firstStrikeNmCE" value="27" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="firstStrikeNmCE" value="27"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="firstStrikeNmPE" value="28" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="firstStrikeNmPE" value="28"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <h3> Sell Section </h3>
+                                <div class="col-sm-6">
+                                    <p> This Month </p>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="firstSellTmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="firstSellTmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstSellTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstSellTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="13"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="14"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFirstStrikeTmCE" value="13" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFirstStrikeTmCE" value="13"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFirstStrikeTmPE" value="14" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFirstStrikeTmPE" value="14"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondSellTmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondSellTmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondSellTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondSellTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="15"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="16"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellSecondStrikeTmCE" value="15" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellSecondStrikeTmCE" value="15"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellSecondStrikeTmPE" value="16" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellSecondStrikeTmPE" value="16"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdSellTmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdSellTmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdSellTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdSellTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="17"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="18"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellThirdStrikeTmCE" value="17" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellThirdStrikeTmCE" value="17"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellThirdStrikeTmPE" value="18" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellThirdStrikeTmPE" value="18"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="fourthSellTmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="fourthSellTmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthSellTmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthSellTmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="29"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="30"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFourthStrikeTmCE" value="29" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFourthStrikeTmCE" value="29"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFourthStrikeTmPE" value="30" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFourthStrikeTmPE" value="30"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>Next Month </p>
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="firstSellNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="firstSellNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstSellNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="firstSellNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="19"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="20"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFirstStrikeNmCE" value="19" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFirstStrikeNmCE" value="19"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFirstStrikeNmPE" value="20" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFirstStrikeNmPE" value="20"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondSellNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="secondSellNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondSellNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="secondSellNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="21"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="22"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellSecondStrikeNmCE" value="21" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellSecondStrikeNmCE" value="21"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellSecondStrikeNmPE" value="22" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellSecondStrikeNmPE" value="22"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdSellNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="thirdSellNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdSellNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="thirdSellNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="23"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="24"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellThirdStrikeNmCE" value="23" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellThirdStrikeNmCE" value="23"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellThirdStrikeNmPE" value="24" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellThirdStrikeNmPE" value="24"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="fourthSellNmStrike" placeHolder="STK" type="text">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" value="0" id="fourthSellNmQty" placeHolder="QTY" type="text">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 dante">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthSellNmAt" placeHolder="AT" type="text">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" value="0" id="fourthSellNmDiv" placeHolder="DIV" type="text">
+                                            </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="31"><span>CE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="ck-button">
+                                                <label>
+                                                  <input type="checkbox" class="checkcepe" value="32"><span>PE</span>
+                                               </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFourthStrikeNmCE" value="31" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFourthStrikeNmCE" value="31"> Sell
+                                                <form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form>
+                                                <input type="radio" data-trade="buy" class="radiotab" name="sellFourthStrikeNmPE" value="32" checked> Buy<br>
+                                                <input type="radio" data-trade="sell" class="radiotab" name="sellFourthStrikeNmPE" value="32"> Sell
+                                                <form>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <hr>
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="shorter_res"> Get Shorter Version </label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="first_cp"> CP(Call, Put) on First Date </label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="currency"> Square on Month End </label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="dontSquare"> Don't Square </label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 buttons">
+                            <button class="btn btn-lg upload-btn" type="button"> GET RESULTS </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script>
+        var ri = function(i) {
+            return document.getElementById(i);
+        }
+
+        $('.upload-btn').on('click', function() {
+
+            var tradeArray = [];
+            var len = document.getElementsByClassName("radiotab").length
+            console.log("The length of radiobuttons is " + len);
+
+            for (var i = 0; i < len; i++) {
+                if (document.getElementsByClassName("radiotab")[i].checked == true) {
+                    tradeArray.push([document.getElementsByClassName("radiotab")[i].getAttribute("data-trade"), document.getElementsByClassName("radiotab")[i].value]);
+                }
+            }
+            console.log(tradeArray);
+
+            checkedboxes = [];
+            var len = document.getElementsByClassName("checkcepe").length;
+
+            for (var i = 0; i < len; i++) {
+                if (document.getElementsByClassName("checkcepe")[i].checked == true) {
+                    checkedboxes.push(document.getElementsByClassName("checkcepe")[i].value);
+                }
+            }
+
+            var buyFirstStrikeTm = parseFloat(document.getElementById("firstBuyTmStrike").value);
+            var buyFirstStrikeTmAt = parseFloat(document.getElementById("firstBuyTmAt").value);
+            var buyFirstStrikeTmDiv = parseFloat(document.getElementById("firstBuyTmDiv").value);
+
+            var buySecondStrikeTm = parseFloat(document.getElementById("secondBuyTmStrike").value);
+            var buySecondStrikeTmAt = parseFloat(document.getElementById("secondBuyTmAt").value);
+            var buySecondStrikeTmDiv = parseFloat(document.getElementById("secondBuyTmDiv").value);
+
+            var buyThirdStrikeTm = parseFloat(document.getElementById("thirdBuyTmStrike").value);
+            var buyThirdStrikeTmAt = parseFloat(document.getElementById("thirdBuyTmAt").value);
+            var buyThirdStrikeTmDiv = parseFloat(document.getElementById("thirdBuyTmDiv").value);
+
+            var buyFourthStrikeTm = parseFloat(document.getElementById("fourthBuyTmStrike").value);
+            var buyFourthStrikeTmAt = parseFloat(document.getElementById("fourthBuyTmAt").value);
+            var buyFourthStrikeTmDiv = parseFloat(document.getElementById("fourthBuyTmDiv").value);
+
+            var buyFirstStrikeNm = parseFloat(document.getElementById("firstBuyNmStrike").value);
+            var buyFirstStrikeNmAt = parseFloat(document.getElementById("firstBuyNmAt").value);
+            var buyFirstStrikeNmDiv = parseFloat(document.getElementById("firstBuyNmDiv").value);
+
+            var buySecondStrikeNm = parseFloat(document.getElementById("secondBuyNmStrike").value);
+            var buySecondStrikeNmAt = parseFloat(document.getElementById("secondBuyNmAt").value);
+            var buySecondStrikeNmDiv = parseFloat(document.getElementById("secondBuyNmDiv").value);
+
+            var buyThirdStrikeNm = parseFloat(document.getElementById("thirdBuyNmStrike").value);
+            var buyThirdStrikeNmAt = parseFloat(document.getElementById("thirdBuyNmAt").value);
+            var buyThirdStrikeNmDiv = parseFloat(document.getElementById("thirdBuyNmDiv").value);
+
+            var buyFourthStrikeNm = parseFloat(document.getElementById("fourthBuyNmStrike").value);
+            var buyFourthStrikeNmAt = parseFloat(document.getElementById("fourthBuyNmAt").value);
+            var buyFourthStrikeNmDiv = parseFloat(document.getElementById("fourthBuyNmDiv").value);
+
+            var buyFirstTmQty = parseFloat(document.getElementById("firstBuyTmQty").value);
+            var buySecondTmQty = parseFloat(document.getElementById("secondBuyTmQty").value);
+            var buyThirdTmQty = parseFloat(document.getElementById("thirdBuyTmQty").value);
+            var buyFourthTmQty = parseFloat(document.getElementById("fourthBuyTmQty").value);
+            var buyFirstNmQty = parseFloat(document.getElementById("firstBuyNmQty").value);
+            var buySecondNmQty = parseFloat(document.getElementById("secondBuyNmQty").value);
+            var buyThirdNmQty = parseFloat(document.getElementById("thirdBuyNmQty").value);
+            var buyFourthNmQty = parseFloat(document.getElementById("fourthBuyNmQty").value);
+
+            var sellFirstStrikeTm = parseFloat(document.getElementById("firstSellTmStrike").value);
+            var sellFirstStrikeTmAt = parseFloat(document.getElementById("firstSellTmAt").value);
+            var sellFirstStrikeTmDiv = parseFloat(document.getElementById("firstSellTmDiv").value);
+
+            var sellSecondStrikeTm = parseFloat(document.getElementById("secondSellTmStrike").value);
+            var sellSecondStrikeTmAt = parseFloat(document.getElementById("secondSellTmAt").value);
+            var sellSecondStrikeTmDiv = parseFloat(document.getElementById("secondSellTmDiv").value);
+
+            var sellThirdStrikeTm = parseFloat(document.getElementById("thirdSellTmStrike").value);
+            var sellThirdStrikeTmAt = parseFloat(document.getElementById("thirdSellTmAt").value);
+            var sellThirdStrikeTmDiv = parseFloat(document.getElementById("thirdSellTmDiv").value);
+
+            var sellFourthStrikeTm = parseFloat(document.getElementById("fourthSellTmStrike").value);
+            var sellFourthStrikeTmAt = parseFloat(document.getElementById("fourthSellTmAt").value);
+            var sellFourthStrikeTmDiv = parseFloat(document.getElementById("fourthSellTmDiv").value);
+
+            var sellFirstStrikeNm = parseFloat(document.getElementById("firstSellNmStrike").value);
+            var sellFirstStrikeNmAt = parseFloat(document.getElementById("firstSellNmAt").value);
+            var sellFirstStrikeNmDiv = parseFloat(document.getElementById("firstSellNmDiv").value);
+
+            var sellSecondStrikeNm = parseFloat(document.getElementById("secondSellNmStrike").value);
+            var sellSecondStrikeNmAt = parseFloat(document.getElementById("secondSellNmAt").value);
+            var sellSecondStrikeNmDiv = parseFloat(document.getElementById("secondSellNmDiv").value);
+
+            var sellThirdStrikeNm = parseFloat(document.getElementById("thirdSellNmStrike").value);
+            var sellThirdStrikeNmAt = parseFloat(document.getElementById("thirdSellNmAt").value);
+            var sellThirdStrikeNmDiv = parseFloat(document.getElementById("thirdSellNmDiv").value);
+
+            var sellFourthStrikeNm = parseFloat(document.getElementById("fourthSellNmStrike").value);
+            var sellFourthStrikeNmAt = parseFloat(document.getElementById("fourthSellNmAt").value);
+            var sellFourthStrikeNmDiv = parseFloat(document.getElementById("fourthSellNmDiv").value);
+
+            var sellFirstTmQty = parseFloat(document.getElementById("firstSellTmQty").value);
+            var sellSecondTmQty = parseFloat(document.getElementById("secondSellTmQty").value);
+            var sellThirdTmQty = parseFloat(document.getElementById("thirdSellTmQty").value);
+            var sellFourthTmQty = parseFloat(document.getElementById("fourthSellTmQty").value);
+            var sellFirstNmQty = parseFloat(document.getElementById("firstSellNmQty").value);
+            var sellSecondNmQty = parseFloat(document.getElementById("secondSellNmQty").value);
+            var sellThirdNmQty = parseFloat(document.getElementById("thirdSellNmQty").value);
+            var sellFourthNmQty = parseFloat(document.getElementById("fourthSellNmQty").value);
+
+            var sellBuyData = {
+                buyFirstStrikeTm: buyFirstStrikeTm,
+                buySecondStrikeTm: buySecondStrikeTm,
+                buyThirdStrikeTm: buyThirdStrikeTm,
+                buyFourthStrikeTm: buyFourthStrikeTm,
+                buyFirstStrikeNm: buyFirstStrikeNm,
+                buySecondStrikeNm: buySecondStrikeNm,
+                buyThirdStrikeNm: buyThirdStrikeNm,
+                buyFourthStrikeNm: buyFourthStrikeNm,
+                buyFirstTmQty: buyFirstTmQty,
+                buySecondTmQty: buySecondTmQty,
+                buyThirdTmQty: buyThirdTmQty,
+                buyFourthTmQty: buyFourthTmQty,
+                buyFirstNmQty: buyFirstNmQty,
+                buySecondNmQty: buySecondNmQty,
+                buyThirdNmQty: buyThirdNmQty,
+                buyFourthNmQty: buyFourthNmQty,
+                sellFirstStrikeTm: sellFirstStrikeTm,
+                sellSecondStrikeTm: sellSecondStrikeTm,
+                sellThirdStrikeTm: sellThirdStrikeTm,
+                sellFirstStrikeNm: sellFirstStrikeNm,
+                sellSecondStrikeNm: sellSecondStrikeNm,
+                sellThirdStrikeNm: sellThirdStrikeNm,
+                sellFourthStrikeNm: sellFourthStrikeNm,
+                sellFirstTmQty: sellFirstTmQty,
+                sellSecondTmQty: sellSecondTmQty,
+                sellThirdTmQty: sellThirdTmQty,
+                sellFourthTmQty: sellFourthTmQty,
+                sellFirstNmQty: sellFirstNmQty,
+                sellSecondNmQty: sellSecondNmQty,
+                sellThirdNmQty: sellThirdNmQty,
+                sellFourthNmQty: sellFourthNmQty,
+                buyFirstStrikeTmAt : buyFirstStrikeTmAt,
+                buyFirstStrikeTmDiv : buyFirstStrikeTmDiv,
+                buySecondStrikeTmAt : buySecondStrikeTmAt,
+                buySecondStrikeTmDiv : buySecondStrikeTmDiv,
+                buyThirdStrikeTmAt : buyThirdStrikeTmAt,
+                buyThirdStrikeTmDiv : buyThirdStrikeTmDiv,
+                buyFourthStrikeTmAt : buyFourthStrikeTmAt,
+                buyFourthStrikeTmDiv : buyFourthStrikeTmDiv,
+                buyFirstStrikeNmAt : buyFirstStrikeNmAt,
+                buyFirstStrikeNmDiv : buyFirstStrikeNmDiv,
+                buySecondStrikeNmAt : buySecondStrikeNmAt,
+                buySecondStrikeNmDiv : buySecondStrikeNmDiv,
+                buyThirdStrikeNmAt : buyThirdStrikeNmAt,
+                buyThirdStrikeNmDiv : buyThirdStrikeNmDiv,
+                buyFourthStrikeNmAt : buyFourthStrikeNmAt,
+                buyFourthStrikeNmDiv : buyFourthStrikeNmDiv,
+                sellFirstStrikeTmAt : sellFirstStrikeTmAt,
+                sellFirstStrikeTmDiv : sellFirstStrikeTmDiv,
+                sellSecondStrikeTmAt : sellSecondStrikeTmAt,
+                sellSecondStrikeTmDiv : sellSecondStrikeTmDiv,
+                sellThirdStrikeTmAt : sellThirdStrikeTmAt,
+                sellThirdStrikeTmDiv : sellThirdStrikeTmDiv,
+                sellFourthStrikeTmAt : sellFourthStrikeTmAt,
+                sellFourthStrikeTmDiv : sellFourthStrikeTmDiv,
+                sellFirstStrikeNmAt : sellFirstStrikeNmAt,
+                sellFirstStrikeNmDiv : sellFirstStrikeNmDiv,
+                sellSecondStrikeNmAt : sellSecondStrikeNmAt,
+                sellSecondStrikeNmDiv : sellSecondStrikeNmDiv,
+                sellThirdStrikeNmAt : sellThirdStrikeNmAt,
+                sellThirdStrikeNmDiv : sellThirdStrikeNmDiv,
+                sellFourthStrikeNmAt : sellFourthStrikeNmAt,
+                sellFourthStrikeNmDiv : sellFourthStrikeNmDiv,
+                checkedboxes: checkedboxes,
+                tradeArray: tradeArray
+            }
+
+            // if (checkedboxes.length == 0) {
+            //     alert("Please select corresponding CE PE");
+            //     return false;
+            // }
+
+            // console.log(sellBuyData.checkedboxes);
+
+            for (key in sellBuyData) {
+                if ((key == "checkedboxes") || (key == "tradeArray")) {
+                    console.log("unchecked key");
+                } else {
+                    if (isNaN(sellBuyData[key])) {
+                        alert("Fill in all inputs");
+                        return false;
+                    }
+                }
+            }
+
+            var plusValue = document.getElementById("plusValue").value;
+            if (isNaN(parseFloat(plusValue))) {
+                alert("Please enter a valid plus value");
+                return false;
+            }
+            var inputQuan = document.getElementById("inputQuan").value;
+            if (isNaN(parseFloat(inputQuan))) {
+                alert("Please enter a valid Quantity");
+                return false;
+            }
+
+            var initialStrike = null;
+
+            if ($("#shorter_res").is(":checked")) {
+                var checked = 1;
+            }else if ($("#first_cp").is(":checked")) {
+                var checked = 2;
+            }
+             else {
+                var checked = 0;
+            }
+
+            if ($("#currency").is(":checked")) {
+                var currency = 1;
+            } else {
+                var currency = 0;
+            }
+
+            if ($("#dontSquare").is(":checked")) {
+                var dontSquare = 1;
+            } else {
+                var dontSquare = 0;
+            }
+
+            var companyname = $(".sel-com option:selected").text().trim();
+
+            var nseYear = document.getElementById("nseYear").value;
+
+            var underlyings = 0;
+
+            $('.upload-btn').attr('disabled', 'disabled');
+
+            console.log("checked is "+checked);
+
+            if(checked == 2){
+
+                    $.ajax({
+                        url: '/onlyOneTrade/' + companyname + '/' + plusValue + '/' + inputQuan + '/' + initialStrike + '/' + checked + '/' + currency + '/' + underlyings + '/' + dontSquare + '/' + nseYear,
+                        type: 'POST',
+                        data: sellBuyData,
+                        dataType: "json",
+                        success: function(finalfilename) {
+                            location.href = '/download/' + finalfilename;
+                            $('.upload-btn').removeAttr('disabled');
+                        },
+                        complete: function(response) {
+                            finalfilename = response.responseText;
+                            location.href = '/download/' + finalfilename;
+                            $('.upload-btn').removeAttr('disabled');
+                            ri('serverresponse').innerHTML = "Please reload page.";
+                        },
+                        statusCode: {
+                            404: function(response) {
+                                ri('serverresponse').innerHTML = response.responseText;
+                            },
+                            503: function(response) {
+                                ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                            }
+                        }
+                    });
+
+            }else{
+                    $.ajax({
+                        url: '/calculate/' + companyname + '/' + plusValue + '/' + inputQuan + '/' + initialStrike + '/' + checked + '/' + currency + '/' + underlyings + '/' + dontSquare + '/' + nseYear,
+                        type: 'POST',
+                        data: sellBuyData,
+                        dataType: "json",
+                        success: function(finalfilename) {
+                            location.href = '/download/' + finalfilename;
+                            $('.upload-btn').removeAttr('disabled');
+                        },
+                        complete: function(response) {
+                            finalfilename = response.responseText;
+                            location.href = '/download/' + finalfilename;
+                            $('.upload-btn').removeAttr('disabled');
+                            ri('serverresponse').innerHTML = "Please reload page.";
+                        },
+                        statusCode: {
+                            404: function(response) {
+                                ri('serverresponse').innerHTML = response.responseText;
+                            },
+                            503: function(response) {
+                                ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                            }
+                        }
+                    });
+            }
+
+        });
+
+    </script>
+</body>

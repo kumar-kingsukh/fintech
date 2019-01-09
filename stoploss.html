@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stoploss</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        
+        #current_price {
+            background-color: teal;
+            color: white;
+            font-family: helvetica;
+            text-align: center;
+            padding: 5px;
+            border: none;
+            width: 100px;
+        }
+        
+        #company_name {
+            font-family: helvetica;
+            font-size: 30px;
+        }
+        
+        #stoploss {
+            font-family: helvetica;
+            font-size: 30px;
+        }
+        
+        #last_trade {
+            font-family: helvetica;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <span id="current_price">Fetching...</span><span id="company_name">NIFTY</span></br>
+    <div class="col-lg-3">
+        <div class="input-group">
+            <input type="text" class="form-control" id="input_amount" placeholder="Enter/Change Amount">
+            <span class="input-group-btn">
+        <button class="btn btn-secondary" id="update_amount" type="button">Update Amount</button>
+      </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <span>STARTED AT:</span><span id="start"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <span>CURRENT STOPLOSS:</span><span id="stoploss"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <span>LAST TRADE:</span><span id="last_trade"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <span>LAST PRICE:</span><span id="last_price"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <button type="button" class="btn btn-success" id="download_current_stand">DOWNLOAD CURRENT STAND</button>
+        </div>
+    </div>
+    <p id="serverresponse"> </p>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js">
+    </script>
+    <script>
+        var ri = function(i) {
+            return document.getElementById(i);
+        }
+
+        var socket = io();
+
+        socket.on('givenStocks', function(data) {
+            ri('start').innerHTML = data.start;
+            ri('current_price').innerHTML = data.currentPrice;
+            ri('stoploss').innerHTML = data.currentStoploss;
+            ri('last_trade').innerHTML = data.lastTrade;
+            ri('last_price').innerHTML = data.lastPrice;
+        });
+
+        ri('input_amount').onclick = function() {
+            console.log(document.getElementById("input_amount").value);
+        }
+
+        ri('update_amount').onclick = function() {
+            var updateAmount = document.getElementById("input_amount").value;
+            if (isNaN(parseFloat(updateAmount))) {
+                alert("Please Enter a valid amount");
+                return false;
+            }
+            console.log(updateAmount);
+            socket.emit('changeValue', updateAmount);
+
+        }
+
+        setInterval(function() {
+            socket.emit('giveStocks');
+        }, 1000);
+
+        ri("download_current_stand").onclick = function() {
+            $('#download_current_stand').attr('disabled', 'disabled');
+            console.log("Clicked");
+
+            $.ajax({
+                url: '/fetch',
+                type: 'POST',
+                data: {},
+                processData: false,
+                contentType: false,
+                success: function(filename) {
+                    location.href = '/download/' + filename;
+                    $('#download_current_stand').removeAttr('disabled');
+                },
+                statusCode: {
+                    404: function(response) {
+                        ri('serverresponse').innerHTML = response.responseText;
+                    },
+                    503: function(response) {
+                        ri('serverresponse').innerHTML = "Server Error or Something wrong with code.";
+                    }
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

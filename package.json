@@ -1,0 +1,37 @@
+{
+  "name": "Stockapp",
+  "version": "1.0.0",
+  "description": "Research going on",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "stock",
+    "realtime"
+  ],
+  "author": "Vivek-Yadav",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "csvtojson": "^1.1.9",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "html-entities": "^1.2.1",
+    "json2csv": "^4.1.2",
+    "json2xls": "^0.1.2",
+    "mongodb": "^3.0.6",
+    "mysql": "^2.15.0",
+    "request": "^2.85.0",
+    "socket.io": "^2.1.0",
+    "xlsx-to-json": "^0.3.0"
+  },
+  "engines": {
+    "node": "4.4.3",
+    "npm": "3.10.8"
+  }
+}
